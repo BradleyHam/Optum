@@ -62,15 +62,34 @@
     const slides=[...document.querySelectorAll('.case-slide')];
     const imgs=[...document.querySelectorAll('.case .media .case-img')];
     const prev=document.getElementById('casePrev'), next=document.getElementById('caseNext');
+    const nav=document.querySelector('.case-nav');
+    const current=document.getElementById('caseCurrent');
+    const total=document.getElementById('caseTotal');
     if(!slides.length||!prev||!next)return;
     let i=0;
+    const format=n=>String(n).padStart(2,'0');
+    if(total)total.textContent=format(slides.length);
     const show=n=>{
       i=(n+slides.length)%slides.length;
-      slides.forEach((s,x)=>s.classList.toggle('is-active',x===i));
-      imgs.forEach((im,x)=>im.classList.toggle('is-active',x===i));
+      slides.forEach((s,x)=>{
+        const active=x===i;
+        s.classList.toggle('is-active',active);
+        s.setAttribute('aria-hidden',String(!active));
+      });
+      imgs.forEach((im,x)=>{
+        const active=x===i;
+        im.classList.toggle('is-active',active);
+        im.setAttribute('aria-hidden',String(!active));
+      });
+      if(current)current.textContent=format(i+1);
     };
     prev.addEventListener('click',()=>show(i-1));
     next.addEventListener('click',()=>show(i+1));
+    if(nav)nav.addEventListener('keydown',e=>{
+      if(e.key==='ArrowLeft'){e.preventDefault();show(i-1);prev.focus();}
+      if(e.key==='ArrowRight'){e.preventDefault();show(i+1);next.focus();}
+    });
+    show(0);
   })();
 
   // header shadow on scroll

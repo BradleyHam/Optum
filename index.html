@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&display=block" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/home.css?v=6">
+<link rel="stylesheet" href="assets/css/home.css?v=7">
 <link rel="stylesheet" href="assets/css/mobile-actions.css?v=6">
 </head>
 <body>
@@ -291,11 +291,17 @@
         <img class="case-img case-img--camp is-active" src="assets/media/projects/camp-glenorchy/homepage.webp" alt="Camp Glenorchy visitor accommodation beneath the mountains">
         <img class="case-img case-img--hidden" src="assets/media/projects/hidden-island/hero.webp" alt="Hidden Island architectural home beneath the Remarkables at Jacks Point">
         <img class="case-img case-img--henderson" src="assets/media/projects/henderson/home-exterior-clean.webp" alt="Exterior courtyard of The Henderson Home in Wānaka">
-        <div class="case-nav">
-          <button class="case-arrow" id="casePrev" type="button" aria-label="Previous project">
+        <div class="case-nav" role="group" aria-label="Browse recent projects">
+          <div class="case-nav-meta">
+            <span class="case-nav-kicker">Browse projects</span>
+            <span class="case-nav-count"><span id="caseCurrent" aria-live="polite">01</span><i aria-hidden="true"></i><span id="caseTotal">03</span></span>
+          </div>
+          <button class="case-arrow case-arrow--prev" id="casePrev" type="button" aria-label="Previous project">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Previous</span>
           </button>
-          <button class="case-arrow" id="caseNext" type="button" aria-label="Next project">
+          <button class="case-arrow case-arrow--next" id="caseNext" type="button" aria-label="Next project">
+            <span>Next</span>
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
@@ -409,6 +415,6 @@
 
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="assets/js/mobile-actions.js?v=2"></script>
-<script src="assets/js/home.js?v=8"></script>
+<script src="assets/js/home.js?v=9"></script>
 </body>
 </html>
