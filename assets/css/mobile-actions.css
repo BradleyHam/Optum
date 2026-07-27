@@ -5,6 +5,10 @@
 
 @media(max-width:999px){
   body{
+    padding-bottom:0;
+  }
+
+  footer{
     padding-bottom:calc(76px + env(safe-area-inset-bottom,0px));
   }
 
