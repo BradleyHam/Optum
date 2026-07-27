@@ -31,27 +31,38 @@
   document.body.appendChild(dock);
 
   const mobile = window.matchMedia('(max-width:999px)');
-  let shouldShow = false;
+  const heroCta = document.querySelector('.hero .hero-bottom .btn');
+  let hasScrolled = window.scrollY > 24;
+  let heroCtaVisible = Boolean(heroCta);
+  let scrollFrame = 0;
 
   const render = () => {
     const drawerOpen = document.getElementById('drawer')?.classList.contains('open');
-    dock.classList.toggle('is-visible', mobile.matches && shouldShow && !drawerOpen);
+    const canShow = mobile.matches && hasScrolled && !heroCtaVisible && !drawerOpen;
+    dock.classList.toggle('is-visible', canShow);
     dock.classList.toggle('is-suppressed', Boolean(drawerOpen));
   };
 
-  const heroCta = document.querySelector('.hero .hero-bottom .btn');
   if (heroCta && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
-      shouldShow = !entries[0].isIntersecting;
+      heroCtaVisible = entries[0].isIntersecting;
       render();
     }, {threshold:.15});
     observer.observe(heroCta);
   } else {
-    window.setTimeout(() => {
-      shouldShow = true;
-      render();
-    }, 650);
+    heroCtaVisible = false;
   }
+
+  window.addEventListener('scroll', () => {
+    if (scrollFrame) return;
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = 0;
+      const nextHasScrolled = window.scrollY > 24;
+      if (nextHasScrolled === hasScrolled) return;
+      hasScrolled = nextHasScrolled;
+      render();
+    });
+  }, {passive:true});
 
   const drawer = document.getElementById('drawer');
   if (drawer) {
