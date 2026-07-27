@@ -3,7 +3,7 @@
 
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = 'assets/css/consultation-modal.css?v=3';
+  css.href = 'assets/css/consultation-modal.css?v=4';
   document.head.appendChild(css);
 
   const markup = `
@@ -55,6 +55,7 @@
                   <label for="consultService">What can we help with?</label>
                   <select id="consultService" name="Enquiry type" required>
                     <option value="" selected disabled>Select a service</option>
+                    <option>Emergency plumbing</option>
                     <option>New build or renovation</option>
                     <option>Heating</option>
                     <option>Plumbing, gas or drainage</option>
@@ -90,6 +91,7 @@
   document.body.insertAdjacentHTML('beforeend', markup);
 
   const modal = document.getElementById('consultationModal');
+  const panel = modal.querySelector('.consult-panel');
   const form = document.getElementById('consultationForm');
   const formWrap = modal.querySelector('.consult-form-wrap');
   const success = document.getElementById('consultSuccess');
@@ -115,7 +117,15 @@
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.documentElement.classList.add('consultation-open');
-    window.setTimeout(() => document.getElementById('consultName').focus(), 80);
+    panel.scrollTop = 0;
+    window.setTimeout(() => {
+      panel.scrollTo({top: 0, left: 0, behavior: 'auto'});
+      if (window.matchMedia('(max-width: 760px)').matches) {
+        panel.focus({preventScroll: true});
+      } else {
+        document.getElementById('consultName').focus({preventScroll: true});
+      }
+    }, 80);
   };
 
   const close = () => {

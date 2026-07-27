@@ -142,15 +142,25 @@ html.consultation-open,html.consultation-open body{overflow:hidden!important;}
 
 @media(max-width:760px){
   .consult-modal{padding:0;place-items:stretch;}
-  .consult-panel{width:100%;max-height:100svh;min-height:100svh;display:block;overflow:auto;}
-  .consult-intro{min-height:auto;padding:2rem 1.35rem 2.2rem;}
+  .consult-panel{
+    width:100%;max-height:100svh;min-height:100svh;display:block;overflow:auto;
+    scroll-padding-top:calc(4.5rem + env(safe-area-inset-top,0px));
+  }
+  .consult-intro{
+    min-height:auto;
+    padding:calc(2rem + env(safe-area-inset-top,0px)) 1.35rem 2.2rem;
+  }
   .consult-brand{margin-bottom:2.5rem;}
   .consult-kicker{margin:0 0 .9rem;}
   .consult-intro h2{max-width:12ch;font-size:2.35rem;}
   .consult-intro-copy{margin-top:1rem;}
   .consult-expect{display:none;}
   .consult-direct{margin-top:1.5rem;}
-  .consult-close{position:fixed;top:.8rem;right:.8rem;}
+  .consult-close{
+    position:fixed;
+    top:calc(.8rem + env(safe-area-inset-top,0px));
+    right:calc(.8rem + env(safe-area-inset-right,0px));
+  }
   .consult-form-side{padding:2.4rem 1.35rem 3.5rem;}
   .consult-grid{grid-template-columns:1fr;gap:1.15rem;}
   .consult-field--full{grid-column:auto;}

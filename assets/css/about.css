@@ -264,7 +264,7 @@
       radial-gradient(85% 65% at 50% 46%,rgba(0,26,43,.42),transparent 72%),
       linear-gradient(180deg,rgba(0,38,62,.68) 0%,rgba(0,38,62,.52) 48%,rgba(0,38,62,.72) 84%,var(--blue-deep) 100%);
   }
-  .closing .wrap{position:relative;z-index:2;padding-block:clamp(5rem,10vw,8rem);}
+  .closing .wrap{position:relative;z-index:2;padding-block:clamp(4rem,7vw,6rem);}
   .closing .eyebrow{justify-content:center;color:var(--bronze-soft);}
   .closing .eyebrow::before{background:var(--bronze-soft);}
   .closing h2{font-size:clamp(2rem,1.4rem + 2.8vw,3.6rem);font-weight:300;max-width:18ch;margin-inline:auto;color:var(--bone);}
