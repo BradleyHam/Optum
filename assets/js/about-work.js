@@ -6,13 +6,21 @@
 
   const index = visual.querySelector('[data-work-index]');
   const label = visual.querySelector('[data-work-label]');
+  const mobileCopy = visual.parentElement.querySelector('.work-mobile-copy');
+  const mobileIndex = mobileCopy?.querySelector('[data-work-mobile-index]');
+  const mobileTitle = mobileCopy?.querySelector('[data-work-mobile-title]');
+  const mobileBody = mobileCopy?.querySelector('[data-work-mobile-body]');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pinnedMobile = window.matchMedia('(max-width: 699px)');
+  const story = visual.closest('.work-layout');
   let transitionTimer = 0;
   let transitionId = 0;
   let hoveredStep = null;
   let requestedStep = null;
   let framePending = false;
   let hasEntered = false;
+  let wheelLocked = false;
+  let wheelUnlockTimer = 0;
 
   const commitStep = (step, id) => {
     if (id !== transitionId || step !== requestedStep) return;
@@ -23,6 +31,10 @@
 
     if (index) index.textContent = stage.padStart(2, '0');
     if (label) label.textContent = step.dataset.workLabel || '';
+    if (mobileIndex) mobileIndex.textContent = stage.padStart(2, '0');
+    if (mobileTitle) mobileTitle.textContent = step.querySelector('h3')?.textContent || '';
+    if (mobileBody) mobileBody.textContent = step.querySelector('p')?.textContent || '';
+    mobileCopy?.classList.remove('is-changing');
   };
 
   const requestStep = (step, { immediate = false } = {}) => {
@@ -48,6 +60,7 @@
     }
 
     visual.classList.add('is-changing');
+    mobileCopy?.classList.add('is-changing');
     visual.dataset.stage = '0';
     transitionTimer = window.setTimeout(() => commitStep(step, id), 180);
   };
@@ -55,7 +68,9 @@
   const closestStepToReadingLine = () => {
     const isMobileStory = window.matchMedia('(max-width: 959px)').matches;
     const visualRect = visual.parentElement.getBoundingClientRect();
-    const readingLine = isMobileStory
+    const readingLine = pinnedMobile.matches
+      ? window.innerHeight * .5
+      : isMobileStory
       ? Math.min(window.innerHeight * .75, visualRect.bottom + 72)
       : window.innerHeight * .5;
 
@@ -80,6 +95,54 @@
     framePending = true;
     window.requestAnimationFrame(syncToScroll);
   };
+
+  const storyIsPinned = () => {
+    if (!story || !pinnedMobile.matches) return false;
+    const storyRect = story.getBoundingClientRect();
+    const visualRect = visual.parentElement.getBoundingClientRect();
+    const stickyTop = Number.parseFloat(getComputedStyle(visual.parentElement).top) || 72;
+    return visualRect.top <= stickyTop + 2 && storyRect.bottom > window.innerHeight * .62;
+  };
+
+  const centreStep = step => {
+    const rect = step.getBoundingClientRect();
+    const targetTop = window.scrollY + rect.top + (rect.height / 2) - (window.innerHeight / 2);
+
+    hasEntered = true;
+    hoveredStep = null;
+    requestStep(step);
+    window.scrollTo({ top: targetTop, behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+
+  window.addEventListener('wheel', event => {
+    if (
+      !pinnedMobile.matches ||
+      event.ctrlKey ||
+      Math.abs(event.deltaY) < 6 ||
+      Math.abs(event.deltaX) > Math.abs(event.deltaY) ||
+      !storyIsPinned()
+    ) return;
+
+    if (wheelLocked) {
+      event.preventDefault();
+      return;
+    }
+
+    const currentStep = requestedStep || closestStepToReadingLine() || steps[0];
+    const currentIndex = steps.indexOf(currentStep);
+    const nextIndex = currentIndex + (event.deltaY > 0 ? 1 : -1);
+
+    if (nextIndex < 0 || nextIndex >= steps.length) return;
+
+    event.preventDefault();
+    wheelLocked = true;
+    centreStep(steps[nextIndex]);
+
+    window.clearTimeout(wheelUnlockTimer);
+    wheelUnlockTimer = window.setTimeout(() => {
+      wheelLocked = false;
+    }, 620);
+  }, { passive: false });
 
   steps.forEach(step => {
     step.addEventListener('pointerenter', event => {

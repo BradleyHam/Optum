@@ -148,6 +148,9 @@
     text-shadow:0 1px 16px rgba(0,15,26,.55);
   }
   @media(max-width:699px){
+    .page-hero .sub{
+      display:none;
+    }
     .page-hero--plumbing{
       min-height:min(74svh,660px);
     }
@@ -165,9 +168,6 @@
       max-width:13ch;
       font-size:clamp(2.4rem,9.8vw,3.15rem);
       line-height:1.03;
-    }
-    .page-hero--plumbing .sub{
-      display:none;
     }
   }
 
