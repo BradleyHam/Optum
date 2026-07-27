@@ -80,6 +80,35 @@
   drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setDrawer(false)));
   document.addEventListener('keydown',e=>{if(e.key==='Escape')setDrawer(false);});
 
+  // Give every service its assigned preview image on mobile.
+  (function(){
+    const rows=[...document.querySelectorAll('.svc-row[data-preview-image]')];
+    if(!rows.length)return;
+
+    rows.forEach(row=>{
+      if(row.querySelector('.svc-media'))return;
+
+      const figure=document.createElement('figure');
+      figure.className='svc-media svc-media--generated';
+
+      const frame=document.createElement('div');
+      frame.className='svc-media-frame';
+
+      const image=document.createElement('img');
+      image.src=row.dataset.previewImage;
+      image.alt=row.dataset.previewLabel||'';
+      image.loading='lazy';
+      image.style.objectPosition=row.dataset.previewPosition||'center';
+
+      const caption=document.createElement('figcaption');
+      caption.textContent=row.dataset.previewLabel||'';
+
+      frame.append(image,caption);
+      figure.appendChild(frame);
+      row.appendChild(figure);
+    });
+  })();
+
   // scroll reveal
   const io=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});

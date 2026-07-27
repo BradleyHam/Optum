@@ -193,8 +193,10 @@
     padding:clamp(1rem,2vw,1.6rem);color:rgba(246,242,234,.9);
     font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
   }
+  .svc-media--generated{display:block;}
   .svc-preview{display:none;}
   @media(min-width:840px){
+    .svc-media--generated{display:none;}
     .svc-row{grid-template-columns:.28fr 1fr;align-items:start;}
     .svc-row .idx{padding-top:.5rem;}
     .svc-row--with-media{grid-template-columns:.16fr minmax(0,1fr) minmax(260px,.72fr);align-items:center;gap:clamp(1.5rem,3vw,3rem);}

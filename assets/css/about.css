@@ -643,3 +643,82 @@
     .work-life-arrowhead,.work-local-mountains,.work-local-ground,
     .work-local-home,.work-local-roots{stroke-dashoffset:0!important;}
   }
+
+  /* Mobile story stage — keep the changing diagram in view while each idea is read */
+  @media(max-width:959px){
+    .work-layout{
+      --work-mobile-top:74px;
+      display:block;
+    }
+    .work-visual{
+      position:sticky;
+      top:var(--work-mobile-top);
+      z-index:4;
+      margin-inline:calc(var(--gutter) * -1);
+      margin-bottom:clamp(1.75rem,5vw,2.6rem);
+      padding:clamp(.35rem,1.5vw,.7rem) var(--gutter) clamp(.85rem,2vw,1.1rem);
+      background:rgba(250,248,243,.94);
+      border-top:1px solid rgba(0,51,82,.045);
+      border-bottom:1px solid rgba(0,51,82,.1);
+      box-shadow:0 16px 30px rgba(0,36,58,.055);
+      -webkit-backdrop-filter:blur(14px) saturate(1.08);
+      backdrop-filter:blur(14px) saturate(1.08);
+    }
+    .work-canvas{
+      width:clamp(210px,48vw,290px);
+      max-width:none;
+      background:radial-gradient(circle at 50% 48%,rgba(193,154,107,.095),transparent 53%);
+    }
+    .work-visual-meta{
+      min-height:1rem;
+      margin-top:-.65rem;
+      padding-inline:0;
+      gap:.75rem;
+      white-space:nowrap;
+    }
+    .work-visual-label{
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .work-layout .svc-rows{
+      position:relative;
+      z-index:1;
+    }
+    .work-layout .svc-row{
+      min-height:clamp(235px,40svh,350px);
+      align-content:center;
+      opacity:.48;
+    }
+    .work-layout .svc-row.is-active{
+      opacity:1;
+    }
+    .work-layout .svc-row:last-child{
+      min-height:clamp(340px,61svh,520px);
+      align-content:start;
+      padding-top:clamp(3rem,10svh,6rem);
+    }
+  }
+
+  @media(max-width:580px){
+    .work-layout{
+      --work-mobile-top:72px;
+    }
+    .work-canvas{
+      width:clamp(205px,56vw,245px);
+    }
+    .work-visual-meta{
+      margin-top:-.55rem;
+      font-size:.59rem;
+      letter-spacing:.145em;
+    }
+    .work-layout .svc-row{
+      min-height:clamp(250px,42svh,360px);
+      opacity:.46;
+    }
+    .work-layout .svc-row.is-active{
+      padding-left:.75rem;
+    }
+    .work-layout .svc-row:last-child{
+      min-height:clamp(380px,64svh,540px);
+    }
+  }

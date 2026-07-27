@@ -114,7 +114,7 @@
     if(!track)return;
     const prev=document.getElementById('rvPrev'), next=document.getElementById('rvNext');
     const step=()=>{
-      const card=track.querySelector('.rv-card');
+      const card=[...track.querySelectorAll('.rv-card')].find(item=>item.offsetParent!==null);
       const gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap)||24;
       return card?card.offsetWidth+gap:track.clientWidth*0.8;
     };

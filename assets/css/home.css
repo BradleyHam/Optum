@@ -641,6 +641,50 @@
   }
   .rv-play:hover{background:var(--blue);border-color:var(--blue);transform:translate(-50%,-50%) scale(1.06);}
 
+  @media(max-width:819px){
+    .reviews{
+      padding-block:clamp(3.5rem,12vw,5rem);
+    }
+    .reviews-head{
+      gap:1.75rem;
+    }
+    .reviews-track{
+      gap:.85rem;
+      margin-top:2.2rem;
+    }
+    .rv-stat{
+      display:none;
+    }
+    .rv-card{
+      width:min(78vw,390px);
+      min-height:clamp(350px,102vw,410px);
+      padding:1.55rem;
+      border-radius:10px;
+    }
+    .rv-video{
+      width:min(64vw,360px);
+      min-height:clamp(350px,102vw,410px);
+      padding:0;
+      border-radius:10px;
+    }
+    .rv-video-media{
+      min-height:100%;
+      border-radius:10px;
+    }
+    .rv-play{
+      width:58px;
+      height:58px;
+    }
+    .rv-stars{
+      margin-bottom:1.15rem;
+      font-size:1.05rem;
+    }
+    .rv-text{
+      font-size:.92rem;
+      line-height:1.58;
+    }
+  }
+
   @media(min-width:820px){
     .reviews-head{flex-direction:row;justify-content:space-between;align-items:flex-end;}
     .reviews-nav{padding-bottom:.4rem;}

@@ -53,7 +53,11 @@
   };
 
   const closestStepToReadingLine = () => {
-    const readingLine = window.innerHeight * .5;
+    const isMobileStory = window.matchMedia('(max-width: 959px)').matches;
+    const visualRect = visual.parentElement.getBoundingClientRect();
+    const readingLine = isMobileStory
+      ? Math.min(window.innerHeight * .75, visualRect.bottom + 72)
+      : window.innerHeight * .5;
 
     return steps.reduce((closest, step) => {
       const rect = step.getBoundingClientRect();
