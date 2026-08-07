@@ -3,6 +3,60 @@
   display:none;
 }
 
+.brand{
+  position:relative;
+  align-items:center;
+}
+
+.brand-logo{
+  display:block;
+  width:clamp(150px,12vw,188px);
+  height:auto;
+  transform:translateY(-3px);
+  filter:none;
+}
+
+.brand::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  transform:translateY(-3px);
+  background:url("../../logo-light.png") center/100% 100% no-repeat;
+  filter:brightness(0) saturate(100%) invert(16%) sepia(30%) saturate(2166%) hue-rotate(163deg) brightness(89%) contrast(103%);
+  opacity:1;
+  pointer-events:none;
+  transition:opacity .35s ease;
+}
+
+.site-header--overlay:not(.scrolled) .brand::after{
+  opacity:0;
+}
+
+.drawer-logo{
+  display:block;
+  width:clamp(158px,44vw,190px);
+  height:auto;
+}
+
+.f-word{
+  position:relative;
+  height:clamp(6rem,25.4vw,31rem);
+  overflow:hidden;
+  margin-bottom:0!important;
+  font-size:0!important;
+  line-height:0!important;
+}
+
+.footer-wordmark{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:auto;
+  opacity:.055;
+  user-select:none;
+}
+
 @media(max-width:999px){
   body{
     padding-bottom:0;
