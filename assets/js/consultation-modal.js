@@ -3,7 +3,7 @@
 
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = 'assets/css/consultation-modal.css?v=4';
+  css.href = 'assets/css/consultation-modal.css?v=5';
   document.head.appendChild(css);
 
   const markup = `
@@ -33,7 +33,14 @@
               <p>A rough description is enough—tell us what you are planning, or what is not working.</p>
             </header>
 
-            <form id="consultationForm">
+            <form id="consultationForm" action="https://formsubmit.co/admin@optum.co.nz" method="POST">
+              <input type="hidden" name="_subject" value="Consultation request from optum.co.nz">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <div class="form-honey" aria-hidden="true">
+                <label for="consultCompany">Leave this field empty</label>
+                <input id="consultCompany" name="_honey" type="text" tabindex="-1" autocomplete="off">
+              </div>
               <div class="consult-grid">
                 <div class="consult-field">
                   <label for="consultName">Name</label>
@@ -41,7 +48,7 @@
                 </div>
                 <div class="consult-field">
                   <label for="consultEmail">Email</label>
-                  <input id="consultEmail" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required>
+                  <input id="consultEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
                 </div>
                 <div class="consult-field">
                   <label for="consultPhone">Phone</label>
@@ -71,17 +78,17 @@
               </div>
 
               <div class="consult-actions">
-                <button class="consult-submit" type="submit">Prepare enquiry <span aria-hidden="true">→</span></button>
-                <p class="consult-privacy">Nothing is sent until you review the prepared message and press send in your email app.</p>
+                <button class="consult-submit" type="submit">Send enquiry <span aria-hidden="true">→</span></button>
+                <p class="consult-privacy" id="consultFormNote" aria-live="polite">Your details will be sent directly to the Optum team.</p>
               </div>
             </form>
           </div>
 
           <div class="consult-success" id="consultSuccess" tabindex="-1">
             <div class="consult-success-mark" aria-hidden="true">→</div>
-            <span class="consult-step">Ready to send</span>
-            <h3>Your email app should be open.</h3>
-            <p>Review the prepared message, attach any plans or photographs if useful, then press send. It will go directly to Optum.</p>
+            <span class="consult-step">Enquiry sent</span>
+            <h3>Thanks — we’ve got it.</h3>
+            <p>The Optum team will review your details and get back to you. For an urgent plumbing problem, call 03 443 5718.</p>
             <button type="button" data-consult-close>Return to the website</button>
           </div>
         </div>
@@ -95,6 +102,7 @@
   const form = document.getElementById('consultationForm');
   const formWrap = modal.querySelector('.consult-form-wrap');
   const success = document.getElementById('consultSuccess');
+  const formNote = document.getElementById('consultFormNote');
   let returnFocus = null;
   let enquiryContext = 'Free consultation';
 
@@ -106,6 +114,7 @@
     form.reset();
     formWrap.hidden = false;
     success.classList.remove('is-visible');
+    if (formNote) formNote.textContent = 'Your details will be sent directly to the Optum team.';
   };
 
   const open = opener => {
@@ -174,31 +183,60 @@
     }
   });
 
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
 
     const data = new FormData(form);
     const value = name => String(data.get(name) || '').trim();
     const subject = `Consultation request: ${value('Enquiry type')} — ${value('Name')}`;
-    const body = [
-      'New consultation request from the Optum website',
-      '',
-      `Name: ${value('Name')}`,
-      `Email: ${value('Email')}`,
-      `Phone: ${value('Phone') || 'Not provided'}`,
-      `Project location: ${value('Project location') || 'Not provided'}`,
-      `Enquiry type: ${value('Enquiry type')}`,
-      `Website context: ${enquiryContext}`,
-      `Page: ${document.title}`,
-      '',
-      'Project details:',
-      value('Message')
-    ].join('\n');
+    const payload = Object.fromEntries(data.entries());
+    payload._subject = subject;
+    payload._template = 'table';
+    payload._captcha = 'false';
+    payload._url = window.location.href;
+    payload['Website context'] = enquiryContext;
+    payload['Page title'] = document.title;
 
-    formWrap.hidden = true;
-    success.classList.add('is-visible');
-    success.focus();
-    window.location.href = `mailto:admin@optum.co.nz?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const button = form.querySelector('button[type="submit"]');
+    const originalButton = button?.innerHTML;
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
+
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Sending…';
+    }
+    if (formNote) formNote.textContent = 'Sending your enquiry…';
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/admin@optum.co.nz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result || result.success === false || result.success === 'false') {
+        throw new Error(result?.message || 'Submission failed');
+      }
+
+      formWrap.hidden = true;
+      success.classList.add('is-visible');
+      success.focus();
+    } catch (error) {
+      if (formNote) {
+        formNote.innerHTML = 'We couldn’t send that just now. Please call <a href="tel:034435718">03 443 5718</a> or email <a href="mailto:admin@optum.co.nz">admin@optum.co.nz</a>.';
+      }
+    } finally {
+      window.clearTimeout(timeout);
+      if (button) {
+        button.disabled = false;
+        button.innerHTML = originalButton;
+      }
+    }
   });
 })();

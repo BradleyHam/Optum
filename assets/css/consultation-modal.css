@@ -116,8 +116,11 @@
   transition:background .3s ease,color .3s ease,transform .3s ease;
 }
 .consult-submit:hover{background:var(--consult-blue-deep);transform:translateY(-1px);}
+.consult-submit:disabled{cursor:wait;opacity:.68;transform:none;}
 .consult-submit span{color:var(--consult-bronze-soft);font-size:1rem;}
 .consult-privacy{max-width:28ch;margin:0;color:#858b8e;font-size:.6rem;line-height:1.55;}
+.consult-privacy a{color:var(--consult-blue);text-decoration:underline;text-underline-offset:2px;}
+.form-honey{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important;}
 
 .consult-success{
   min-height:460px;display:none;align-content:center;justify-items:start;

@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&amp;display=block" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/contact.css?v=6">
+<link rel="stylesheet" href="assets/css/contact.css?v=7">
 <link rel="stylesheet" href="assets/css/mobile-actions.css?v=9">
 </head>
 <body>
@@ -85,7 +85,15 @@
           <p class="hours">Office hours · Monday to Friday · 8am to 5pm</p>
         </aside>
 
-        <form class="contact-form reveal" id="contactForm">
+        <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/admin@optum.co.nz" method="POST">
+          <input type="hidden" name="_subject" value="Website enquiry from optum.co.nz">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_url" value="https://www.optum.co.nz/contact.html">
+          <div class="form-honey" aria-hidden="true">
+            <label for="contact-company">Leave this field empty</label>
+            <input id="contact-company" name="_honey" type="text" tabindex="-1" autocomplete="off">
+          </div>
           <div class="form-grid">
             <div class="form-field">
               <label for="contact-name">Name</label>
@@ -94,7 +102,7 @@
 
             <div class="form-field">
               <label for="contact-email">Email</label>
-              <input id="contact-email" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
             </div>
 
             <div class="form-field">
@@ -122,8 +130,8 @@
             </div>
 
             <div class="form-actions">
-              <button class="btn" type="submit">Email Optum <span class="arw" aria-hidden="true">→</span></button>
-              <p class="form-note" id="contactFormNote">Opens your email app.</p>
+              <button class="btn" type="submit">Send enquiry <span class="arw" aria-hidden="true">→</span></button>
+              <p class="form-note" id="contactFormNote" aria-live="polite">Sends directly to the Optum team.</p>
             </div>
           </div>
         </form>
@@ -200,6 +208,6 @@
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="assets/js/mobile-actions.js?v=2"></script>
 <script src="assets/js/site.js?v=13"></script>
-<script src="assets/js/contact-form.js?v=3"></script>
+<script src="assets/js/contact-form.js?v=4"></script>
 </body>
 </html>

@@ -339,7 +339,9 @@
     border:1px solid var(--blue);justify-content:center;background:var(--blue);color:var(--bone);box-shadow:none;
   }
   .form-actions .btn:hover{background:var(--blue-deep);border-color:var(--blue-deep);}
+  .form-actions .btn:disabled{cursor:wait;opacity:.68;transform:none;}
   .form-note{max-width:31ch;margin:0;color:var(--muted);font-size:.74rem;line-height:1.55;}
+  .form-note a{color:var(--blue);text-decoration:underline;text-underline-offset:2px;}
   .form-honey{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important;}
 
   /* ============ EMERGENCY PLUMBING ============ */
