@@ -21,8 +21,7 @@
   position:absolute;
   inset:0;
   transform:translateY(-3px);
-  background:url("../../logo-light.png") center/100% 100% no-repeat;
-  filter:brightness(0) saturate(100%) invert(16%) sepia(30%) saturate(2166%) hue-rotate(163deg) brightness(89%) contrast(103%);
+  background:url("../logo-colour.png") center/100% 100% no-repeat;
   opacity:1;
   pointer-events:none;
   transition:opacity .35s ease;
