@@ -12,9 +12,9 @@
 
     const phone = document.createElement('a');
     phone.className = 'mobile-header-phone';
-    phone.href = 'tel:0800467886';
-    phone.setAttribute('aria-label', 'Call Optum on 0800 467 886');
-    phone.innerHTML = '<span class="mobile-header-phone-label">Call</span><span>0800 467 886</span>';
+    phone.href = 'tel:034435718';
+    phone.setAttribute('aria-label', 'Call Optum on 03 443 5718');
+    phone.innerHTML = '<span class="mobile-header-phone-label">Call</span><span>03 443 5718</span>';
     navCta.insertBefore(phone, menuButton);
   }
 
