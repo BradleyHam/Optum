@@ -1,0 +1,102 @@
+import {defineField, defineType} from 'sanity'
+
+export const pageContent = defineType({
+  name: 'pageContent',
+  title: 'Website wording',
+  type: 'document',
+  groups: [
+    {name: 'hero', title: 'Top of page', default: true},
+    {name: 'intro', title: 'Introduction'},
+    {name: 'cta', title: 'Bottom call to action'},
+  ],
+  fields: [
+    defineField({name: 'pageKey', title: 'Page key', type: 'string', hidden: true}),
+    defineField({
+      name: 'pageTitle',
+      title: 'Page',
+      type: 'string',
+      readOnly: true,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'heroEyebrow',
+      title: 'Small heading',
+      type: 'string',
+      group: 'hero',
+      description: 'The short label above the main heading.',
+    }),
+    defineField({
+      name: 'heroTitleBefore',
+      title: 'Main heading',
+      type: 'string',
+      group: 'hero',
+      description: 'The normal part of the main heading.',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'heroTitleEmphasis',
+      title: 'Highlighted ending',
+      type: 'string',
+      group: 'hero',
+      description: 'The italic ending of the main heading.',
+    }),
+    defineField({
+      name: 'heroTitleAfter',
+      title: 'Text after highlighted words',
+      type: 'string',
+      group: 'hero',
+      description: 'Optional normal text that follows the highlighted words.',
+    }),
+    defineField({
+      name: 'heroSummary',
+      title: 'Opening summary',
+      type: 'text',
+      rows: 4,
+      group: 'hero',
+    }),
+    defineField({
+      name: 'introTitleBefore',
+      title: 'Introduction heading',
+      type: 'string',
+      group: 'intro',
+    }),
+    defineField({
+      name: 'introTitleEmphasis',
+      title: 'Highlighted ending',
+      type: 'string',
+      group: 'intro',
+    }),
+    defineField({
+      name: 'introTitleAfter',
+      title: 'Text after highlighted words',
+      type: 'string',
+      group: 'intro',
+    }),
+    defineField({
+      name: 'introBody',
+      title: 'Introduction text',
+      type: 'text',
+      rows: 5,
+      group: 'intro',
+    }),
+    defineField({name: 'ctaEyebrow', title: 'Small heading', type: 'string', group: 'cta'}),
+    defineField({name: 'ctaTitleBefore', title: 'Main heading', type: 'string', group: 'cta'}),
+    defineField({
+      name: 'ctaTitleEmphasis',
+      title: 'Highlighted ending',
+      type: 'string',
+      group: 'cta',
+    }),
+    defineField({
+      name: 'ctaTitleAfter',
+      title: 'Text after highlighted words',
+      type: 'string',
+      group: 'cta',
+    }),
+    defineField({name: 'ctaBody', title: 'Supporting text', type: 'text', rows: 4, group: 'cta'}),
+    defineField({name: 'ctaButton', title: 'Button wording', type: 'string', group: 'cta'}),
+  ],
+  preview: {
+    select: {title: 'pageTitle', subtitle: 'heroTitleBefore'},
+  },
+})

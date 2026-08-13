@@ -1,5 +1,15 @@
 {
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "verify": "node scripts/verify-build.mjs",
+    "content:extract": "node scripts/extract-content.mjs",
+    "content:import": "npm --prefix studio run import:content",
+    "studio:dev": "npm --prefix studio run dev",
+    "studio:build": "npm --prefix studio run build",
+    "studio:validate": "npm --prefix studio run validate"
+  },
   "dependencies": {
+    "cheerio": "^1.2.0",
     "claude": "^0.1.1"
   }
 }

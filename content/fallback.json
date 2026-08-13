@@ -1,0 +1,510 @@
+{
+  "sitePages": [
+    {
+      "pageKey": "home",
+      "pageTitle": "Home",
+      "heroEyebrow": "Wānaka & Queenstown",
+      "heroTitleBefore": "Better living,",
+      "heroTitleEmphasis": "by design.",
+      "heroSummary": "Central heating, plumbing, ventilation and servicing for homes across Wānaka and Queenstown, designed and maintained as one system.",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Warmth is best designed",
+      "ctaTitleEmphasis": "early.",
+      "ctaBody": "Talk to us early and warmth, comfort and running costs are designed in from the first drawings.",
+      "ctaButton": "Free consultation"
+    },
+    {
+      "pageKey": "heating",
+      "pageTitle": "Heating",
+      "heroEyebrow": "Heating · Wānaka & Queenstown",
+      "heroTitleBefore": "Warmth, engineered into the",
+      "heroTitleEmphasis": "fabric.",
+      "heroSummary": "Whole-home heating that holds an even, gentle warmth through the coldest alpine winters. Efficient, silent, and invisible in daily life.",
+      "introTitleBefore": "Central heating, hydronic underfloor heating and heat pumps for homes across Wānaka and Queenstown, sized, zoned and designed",
+      "introTitleEmphasis": "from the first drawings.",
+      "introBody": "Heating is our signature work. We calculate what your home actually needs, then design one system where the heat source, underfloor heating, hot water and controls work together. It runs quietly, costs little and simply disappears into daily life.",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Warmth is best designed",
+      "ctaTitleEmphasis": "early.",
+      "ctaBody": "Talk to us while your project is still on paper and warmth, comfort and running costs are designed in from the first drawings.",
+      "ctaButton": "Free consultation"
+    },
+    {
+      "pageKey": "plumbing",
+      "pageTitle": "Plumbing",
+      "heroEyebrow": "Plumbing · Wānaka & Queenstown",
+      "heroTitleBefore": "Plumbing for the way your home",
+      "heroTitleEmphasis": "really works.",
+      "heroSummary": "From new builds and renovations to repairs and off-mains systems, Optum brings plumbing, gas, drainage and hot water together under one experienced team.",
+      "introTitleBefore": "Plumbing, gas fitting and drainlaying for new builds, renovations and existing homes across Wānaka and Queenstown.",
+      "introTitleEmphasis": "From town supply to off-mains,",
+      "introTitleAfter": "we make the whole system work.",
+      "introBody": "Optum advises, designs, installs, repairs and maintains complete plumbing systems. Working with homeowners, architects and builders, we plan water supply, hot water, drainage, gas and wastewater around the home and the people who use it.",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Plumbing is best planned",
+      "ctaTitleEmphasis": "early.",
+      "ctaBody": "Talk to us while your project is still on paper and the water, gas and drainage are designed in from the first drawings.",
+      "ctaButton": "Free consultation"
+    },
+    {
+      "pageKey": "ventilation",
+      "pageTitle": "Ventilation",
+      "heroEyebrow": "Ventilation & Cooling · Wānaka & Queenstown",
+      "heroTitleBefore": "Air a home can",
+      "heroTitleEmphasis": "breathe.",
+      "heroSummary": "Fresh, filtered air and steady summer temperatures. Balanced ventilation and cooling that keep a healthy home calm and dry, without noise or draughts.",
+      "introTitleBefore": "Balanced ventilation, MVHR heat recovery and cooling for new and existing homes across Wānaka and Queenstown, designed with the heating",
+      "introTitleEmphasis": "as one system.",
+      "introBody": "The better a home is built, the more its air must be designed. High-performance homes are sealed tight, so fresh air, moisture control and summer cooling have to be planned, not left to open windows. We design ventilation alongside the heating so the whole climate of the home works together.",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Healthy air is designed",
+      "ctaTitleEmphasis": "early.",
+      "ctaBody": "Talk to us while your project is still on paper and fresh air, moisture control and cooling are built into the design from the start.",
+      "ctaButton": "Free consultation"
+    },
+    {
+      "pageKey": "servicing",
+      "pageTitle": "Servicing",
+      "heroEyebrow": "Servicing · Wānaka & Queenstown",
+      "heroTitleBefore": "Systems we install,",
+      "heroTitleEmphasis": "we look after.",
+      "heroSummary": "Planned servicing and prompt repairs from two local teams, with annual care for heat pumps and boilers plus practical fault-finding when systems stop behaving.",
+      "introTitleBefore": "Heating system servicing, boiler servicing, repairs and maintenance across Wānaka and Queenstown, backed by a company",
+      "introTitleEmphasis": "operating since 1996.",
+      "introBody": "A well-designed system deserves to be kept at its best. We service heat pumps, boilers and hydronic systems, and diagnose faults when something is no longer working as it should.",
+      "ctaEyebrow": "Book a service",
+      "ctaTitleBefore": "Keep your system at its",
+      "ctaTitleEmphasis": "best.",
+      "ctaBody": "Book annual maintenance, or ask us to diagnose a system that is no longer working as it should.",
+      "ctaButton": "Book a service"
+    },
+    {
+      "pageKey": "about",
+      "pageTitle": "About",
+      "heroEyebrow": "About",
+      "heroTitleBefore": "Locally owned, and quietly obsessed with getting it",
+      "heroTitleEmphasis": "right.",
+      "heroSummary": "Optum has been designing and installing heating, plumbing and energy systems since 1996, and today serves Wānaka and Queenstown.",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Let's design your home's",
+      "ctaTitleEmphasis": "comfort.",
+      "ctaBody": "Talk to us early and warmth, comfort and running costs are designed in from the first drawings.",
+      "ctaButton": "Free consultation"
+    },
+    {
+      "pageKey": "our-work",
+      "pageTitle": "Our Work",
+      "heroEyebrow": "Our work",
+      "heroTitleBefore": "Homes we have made",
+      "heroTitleEmphasis": "quietly exceptional.",
+      "heroSummary": "A few of the projects where heating, plumbing, ventilation and energy were designed as one system. Every home here runs the way it was drawn.",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Your home could be",
+      "ctaTitleEmphasis": "next.",
+      "ctaBody": "Talk to us while your project is still on paper and every system on this page is designed in from the first drawings.",
+      "ctaButton": "Free consultation"
+    }
+  ],
+  "projects": [
+    {
+      "slug": "henderson-home",
+      "order": 10,
+      "title": "The Henderson Home",
+      "projectType": "High-performance new build",
+      "location": "Wānaka",
+      "cardSummary": "A Stiebel Eltron air-to-water heat pump running underfloor heating, active ceiling panels, cooling and hot water, with heat recovery ventilation and fire sprinklers throughout. Twelve months in, it has far exceeded expectations for health and comfort.",
+      "heroTitleBefore": "The Henderson",
+      "heroTitleEmphasis": "Home.",
+      "heroSummary": "A home where heating, cooling, hot water and fresh air work as one quiet, efficient system.",
+      "heroImage": {
+        "src": "assets/media/projects/henderson/home-exterior-clean.webp",
+        "alt": "Exterior courtyard of The Henderson Home in Wānaka"
+      },
+      "facts": [
+        {
+          "label": "Location",
+          "value": "Wānaka"
+        },
+        {
+          "label": "Project",
+          "value": "New build"
+        },
+        {
+          "label": "Primary system",
+          "value": "Air-to-water heat pump"
+        },
+        {
+          "label": "Focus",
+          "value": "Year-round comfort"
+        }
+      ],
+      "storyKicker": "The brief",
+      "storyHeadingBefore": "Comfort without the",
+      "storyHeadingEmphasis": "running-cost anxiety.",
+      "storyParagraphs": [
+        "After years of cold, draughty homes and rising power bills, the owners wanted a home that felt consistently healthy and comfortable without demanding excessive energy.",
+        "The answer began with the building itself: high insulation levels, an airtight wrap and triple glazing reduce the load before any heating is switched on. Optum then sized one integrated system around the way the home would actually perform."
+      ],
+      "featuresHeading": "One connected system.",
+      "featuresSummary": "Every component was selected to do its job quietly while supporting the performance of the whole home.",
+      "features": [
+        {
+          "title": "Heating & hot water",
+          "description": "A 7kW Stiebel Eltron air-to-water heat pump supplies low-temperature space heating and a 400L hot-water cylinder."
+        },
+        {
+          "title": "Underfloor & active ceilings",
+          "description": "Underfloor loops warm the concrete and tiled zones, while active ceiling panels give bedrooms a faster response."
+        },
+        {
+          "title": "Cooling & fresh air",
+          "description": "The heat pump reverses for summer cooling, supported by balanced heat-recovery ventilation delivering filtered, dry air."
+        },
+        {
+          "title": "Protection & water quality",
+          "description": "Concealed residential fire sprinklers and whole-home UV filtration add protection without compromising the architecture."
+        }
+      ],
+      "galleryHeading": "Inside the project",
+      "gallerySummary": "The performance layer behind the calm, finished home.",
+      "gallery": [
+        {
+          "src": "assets/media/projects/henderson/services-ceiling.webp",
+          "alt": "Heating and building services installed within the insulated ceiling",
+          "caption": "Services integrated into the envelope",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/henderson/plant-room.webp",
+          "alt": "The Henderson Home plant room with hot water cylinder and filtration equipment",
+          "caption": "Heating, hot water and filtration",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/henderson/interior.webp",
+          "alt": "Sunlit finished interior of The Henderson Home looking towards the mountains",
+          "caption": "The finished result · warm, light and quiet",
+          "wide": true
+        }
+      ],
+      "galleryCreditLabel": "original Optum case study",
+      "galleryCreditUrl": "https://optum.co.nz/the-henderson-home/",
+      "outcomeQuoteBefore": "“Once you have lived in a home like this, it would be a struggle to go back to living in a",
+      "outcomeQuoteEmphasis": "standard NZ home.",
+      "outcomeQuoteAfter": "”",
+      "outcomeBody": "Twelve months after completion, the home had exceeded the owners' expectations for comfort and health. The system responds to outside conditions, supplying only the energy needed to maintain an even indoor temperature.",
+      "outcomeCredit": "The homeowner",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Design comfort in from the",
+      "ctaTitleEmphasis": "first drawing.",
+      "ctaBody": "Talk to Optum early and every system can be considered as part of the architecture.",
+      "ctaButton": "Free consultation",
+      "seoTitle": "The Henderson Home | High-performance Heating Project | Optum",
+      "seoDescription": "A high-performance Wānaka home with integrated underfloor heating, active ceiling panels, cooling, hot water, heat recovery ventilation and fire protection."
+    },
+    {
+      "slug": "camp-glenorchy",
+      "order": 20,
+      "title": "Camp Glenorchy",
+      "projectType": "Eco retreat",
+      "location": "Glenorchy",
+      "cardSummary": "Solar thermal collectors, ground source heating, underfloor and full plumbing and drainage for New Zealand's most sustainable visitor accommodation. Named Project of the Year at the 2018 Master Plumbers Awards.",
+      "award": "Project of the Year · Master Plumbers 2018",
+      "heroTitleBefore": "Camp",
+      "heroTitleEmphasis": "Glenorchy.",
+      "heroSummary": "Integrated renewable heating, water and drainage services for a visitor retreat built to demonstrate better environmental performance.",
+      "heroImage": {
+        "src": "assets/media/projects/camp-glenorchy/hero.webp",
+        "alt": "Camp Glenorchy eco retreat beneath the surrounding mountains"
+      },
+      "heroCreditLabel": "Project image via ArchiPro",
+      "heroCreditUrl": "https://archipro.co.nz/professional/optum-plumbing-and-energy-solutions",
+      "facts": [
+        {
+          "label": "Location",
+          "value": "Glenorchy"
+        },
+        {
+          "label": "Project",
+          "value": "Eco visitor retreat"
+        },
+        {
+          "label": "Recognition",
+          "value": "Project of the Year"
+        },
+        {
+          "label": "Focus",
+          "value": "Low-impact operation"
+        }
+      ],
+      "storyKicker": "The brief",
+      "storyHeadingBefore": "Make sustainability part of the",
+      "storyHeadingEmphasis": "daily experience.",
+      "storyParagraphs": [
+        "Camp Glenorchy was conceived as a practical demonstration of resource-efficient accommodation—comfortable for guests while reducing demand on energy and water.",
+        "Optum's work brought heating, solar collection, plumbing and drainage into one coordinated services package. The system needed to perform in an alpine climate while staying true to the project's environmental intent."
+      ],
+      "featuresHeading": "Services working together.",
+      "featuresSummary": "A coordinated approach made the renewable systems part of the building rather than an addition to it.",
+      "features": [
+        {
+          "title": "Solar thermal",
+          "description": "Roof-mounted collectors harvest solar energy to reduce the demand associated with water heating."
+        },
+        {
+          "title": "Ground-source heating",
+          "description": "Ground-source technology provides an efficient foundation for space heating in Glenorchy's demanding climate."
+        },
+        {
+          "title": "Underfloor comfort",
+          "description": "Low-temperature underfloor heating delivers even warmth without interrupting the architecture or guest experience."
+        },
+        {
+          "title": "Plumbing & drainage",
+          "description": "Complete plumbing and drainage services were coordinated across the retreat as part of the wider sustainability strategy."
+        }
+      ],
+      "galleryHeading": "Inside the project",
+      "gallerySummary": "Finished spaces above; coordinated renewable services underneath.",
+      "gallery": [
+        {
+          "src": "assets/media/projects/camp-glenorchy/exterior.webp",
+          "alt": "Camp Glenorchy accommodation buildings and mountain landscape",
+          "caption": "Resource-efficient accommodation",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/camp-glenorchy/bathroom.webp",
+          "alt": "Finished Camp Glenorchy bathroom with concrete basin and brass fittings",
+          "caption": "Plumbing within the finished interior",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/camp-glenorchy/plant-room.webp",
+          "alt": "Camp Glenorchy plant room with coordinated pipework and hot water storage",
+          "caption": "Renewable heating plant",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/camp-glenorchy/pipework.webp",
+          "alt": "Extensive plumbing and heating pipework installed above the Camp Glenorchy ceiling",
+          "caption": "Services coordinated across the retreat",
+          "wide": false
+        }
+      ],
+      "galleryCreditLabel": "Optum's ArchiPro project portfolio",
+      "galleryCreditUrl": "https://archipro.co.nz/project/camp-glenorchy-optum-plumbing-and-energy-solutions",
+      "outcomeQuoteBefore": "A landmark project where environmental ambition became",
+      "outcomeQuoteEmphasis": "working infrastructure.",
+      "outcomeBody": "The completed services support Camp Glenorchy's goal of offering comfort with lower resource demand. The project was recognised as Project of the Year at the 2018 Master Plumbers Awards.",
+      "outcomeCredit": "Master Plumbers Awards · 2018",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Design performance in from the",
+      "ctaTitleEmphasis": "first drawing.",
+      "ctaBody": "Talk to Optum early and heating, water and energy can be considered as one system.",
+      "ctaButton": "Free consultation",
+      "seoTitle": "Camp Glenorchy | Award-winning Sustainable Services Project | Optum",
+      "seoDescription": "Optum's award-winning heating, solar thermal, plumbing and drainage work for Camp Glenorchy, a landmark sustainable visitor retreat."
+    },
+    {
+      "slug": "hidden-island",
+      "order": 30,
+      "title": "Hidden Island",
+      "projectType": "Architectural new build",
+      "location": "Jacks Point",
+      "cardSummary": "A 500m²-plus home run by a 30kW ground source heat pump with zoned underfloor heating, thermal storage, 5kW solar PV and wastewater treatment, designed for efficiency at scale.",
+      "heroTitleBefore": "Hidden",
+      "heroTitleEmphasis": "Island.",
+      "heroSummary": "A large alpine home whose heating, energy and wastewater systems were designed for efficiency at scale.",
+      "heroImage": {
+        "src": "assets/media/projects/hidden-island/hero.webp",
+        "alt": "Hidden Island architectural home beneath the Remarkables at Jacks Point"
+      },
+      "heroCreditLabel": "Project image via ArchiPro",
+      "heroCreditUrl": "https://archipro.co.nz/project/hidden-island-optum-plumbing-and-energy-solutions",
+      "facts": [
+        {
+          "label": "Location",
+          "value": "Jacks Point"
+        },
+        {
+          "label": "Scale",
+          "value": "500m²-plus"
+        },
+        {
+          "label": "Primary system",
+          "value": "Ground-source heat pump"
+        },
+        {
+          "label": "Focus",
+          "value": "Efficiency at scale"
+        }
+      ],
+      "storyKicker": "The brief",
+      "storyHeadingBefore": "High comfort, without energy use growing with the",
+      "storyHeadingEmphasis": "floor plan.",
+      "storyParagraphs": [
+        "A home of more than 500m² creates a substantial heating and energy challenge, particularly at the foot of the Remarkables.",
+        "Working with the homeowner and project managers from consultation through completion, Optum designed the services as one coordinated system: ground-source heating, zoned distribution, thermal storage, on-site generation and wastewater treatment."
+      ],
+      "featuresHeading": "Built for the scale.",
+      "featuresSummary": "The system balances generous comfort with deliberate control over when and where energy is used.",
+      "features": [
+        {
+          "title": "30kW ground source",
+          "description": "A Kensa ground-source heat pump draws stable low-grade energy from the ground to serve the home's heating demand."
+        },
+        {
+          "title": "Zoned underfloor heating",
+          "description": "Separate underfloor zones with Heatmiser controls allow different parts of the home to be managed independently."
+        },
+        {
+          "title": "Thermal storage & solar PV",
+          "description": "A Rotex thermal store works alongside a 5kW solar array and Power Genius distribution to make better use of generated energy."
+        },
+        {
+          "title": "Wastewater treatment",
+          "description": "Two Biolytix treatment systems complete the integrated response to the site's servicing requirements."
+        }
+      ],
+      "galleryHeading": "Inside the project",
+      "gallerySummary": "The planning, distribution and plant behind a large alpine home's comfort.",
+      "gallery": [
+        {
+          "src": "assets/media/projects/hidden-island/system-plan.webp",
+          "alt": "Hidden Island heating and plumbing system layout drawing",
+          "caption": "Integrated system planning",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/hidden-island/plant-room.webp",
+          "alt": "Hidden Island ground-source plant room with copper distribution pipework",
+          "caption": "Ground-source plant and storage",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/hidden-island/underfloor.webp",
+          "alt": "Zoned underfloor heating pipework during the Hidden Island build",
+          "caption": "Zoned underfloor distribution",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/hidden-island/wastewater.webp",
+          "alt": "Biolytix wastewater treatment tank installed in native bush",
+          "caption": "On-site wastewater treatment",
+          "wide": false
+        }
+      ],
+      "galleryCreditLabel": "Optum's ArchiPro project portfolio",
+      "galleryCreditUrl": "https://archipro.co.nz/project/hidden-island-optum-plumbing-and-energy-solutions",
+      "outcomeQuoteBefore": "Complex building services made",
+      "outcomeQuoteEmphasis": "calm, controlled and coherent.",
+      "outcomeBody": "The completed system gives a large architectural home precise zoned comfort, renewable generation and a considered approach to water—all engineered together rather than delivered as separate pieces.",
+      "outcomeCredit": "Integrated from consultancy to completion",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Bring the system into the",
+      "ctaTitleEmphasis": "design conversation.",
+      "ctaBody": "Talk to Optum early and complex services can become one simple, considered plan.",
+      "ctaButton": "Free consultation",
+      "seoTitle": "Hidden Island | Ground-source Heating Project, Jacks Point | Optum",
+      "seoDescription": "A 500m²-plus Jacks Point home with 30kW ground-source heating, zoned underfloor comfort, thermal storage, solar PV and wastewater treatment."
+    },
+    {
+      "slug": "west-meadows",
+      "order": 40,
+      "title": "West Meadows Drive II",
+      "projectType": "High-end new build",
+      "location": "Wānaka",
+      "cardSummary": "Designed with Three Sixty Architecture: full plumbing, drainage and gasfitting with an air-to-water heat pump, 3kW solar PV, Rotex thermal storage and zoned underfloor heating.",
+      "heroTitleBefore": "West Meadows",
+      "heroTitleEmphasis": "Drive II.",
+      "heroSummary": "Plumbing, heating and energy designed as one reliable, low-impact system.",
+      "heroImage": {
+        "src": "assets/media/projects/west-meadows-ii/hero-solar.webp",
+        "alt": "Solar photovoltaic panels on the roof at West Meadows Drive II"
+      },
+      "heroCreditLabel": "Project imagery via Optum on ArchiPro",
+      "heroCreditUrl": "https://archipro.co.nz/project/west-meadows-drive-ii-optum-plumbing-and-energy-solutions",
+      "facts": [
+        {
+          "label": "Location",
+          "value": "Wānaka"
+        },
+        {
+          "label": "Project",
+          "value": "High-end new build"
+        },
+        {
+          "label": "Architect",
+          "value": "Three Sixty Architecture"
+        },
+        {
+          "label": "Scope",
+          "value": "Total services package"
+        }
+      ],
+      "storyKicker": "The brief",
+      "storyHeadingBefore": "One complete system,",
+      "storyHeadingEmphasis": "considered early.",
+      "storyParagraphs": [
+        "Working alongside Three Sixty Architecture, Optum designed the home's plumbing, heating and energy systems as part of the architecture from the outset.",
+        "The total package covered plumbing, drainage, gasfitting and heating, with every component selected to be efficient, reliable, inexpensive to run and maintain, and low in environmental impact."
+      ],
+      "featuresHeading": "Designed as one system.",
+      "featuresSummary": "Generation, storage, heating and hot water work together instead of competing for energy.",
+      "features": [
+        {
+          "title": "Air-to-water heat pump",
+          "description": "One efficient system supplies domestic hot water and the home's central heating."
+        },
+        {
+          "title": "3kW solar PV",
+          "description": "On-site generation supports the heat pump as well as the wider household electrical load."
+        },
+        {
+          "title": "Rotex thermal store",
+          "description": "A dual-element thermal store provides a dependable buffer for heating and hot water."
+        },
+        {
+          "title": "Zoned underfloor heating",
+          "description": "Heatmiser controls allow even low-temperature warmth to be managed room by room."
+        }
+      ],
+      "galleryHeading": "Inside the project",
+      "gallerySummary": "Renewable generation above; carefully coordinated heating services below.",
+      "gallery": [
+        {
+          "src": "assets/media/projects/west-meadows-ii/underfloor.webp",
+          "alt": "Underfloor heating pipework installed at West Meadows Drive II",
+          "caption": "Zoned underfloor distribution",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/west-meadows-ii/plant-room.webp",
+          "alt": "Copper pipework and heating equipment in the West Meadows Drive II plant room",
+          "caption": "A tightly coordinated plant room",
+          "wide": false
+        },
+        {
+          "src": "assets/media/projects/west-meadows-ii/thermal-store.webp",
+          "alt": "Rotex thermal store and connected services at West Meadows Drive II",
+          "caption": "Thermal storage connecting heat and hot water",
+          "wide": true
+        }
+      ],
+      "galleryCreditLabel": "Optum's ArchiPro project portfolio",
+      "galleryCreditUrl": "https://archipro.co.nz/project/west-meadows-drive-ii-optum-plumbing-and-energy-solutions",
+      "outcomeQuoteBefore": "A complete system designed to be",
+      "outcomeQuoteEmphasis": "efficient, reliable and low impact.",
+      "outcomeBody": "Optum coordinated plumbing, drainage, gasfitting, heating and energy from design through installation, giving the home a single, coherent services strategy.",
+      "outcomeCredit": "Design and installation · Optum",
+      "ctaEyebrow": "Let's begin",
+      "ctaTitleBefore": "Make energy part of the",
+      "ctaTitleEmphasis": "design.",
+      "ctaBody": "Talk to Optum early and generation, storage and comfort can be engineered together.",
+      "ctaButton": "Free consultation",
+      "seoTitle": "West Meadows Drive II | Integrated Heating and Solar Project | Optum",
+      "seoDescription": "Integrated plumbing, drainage and gasfitting with air-to-water heating, 3kW solar PV, thermal storage and zoned underfloor comfort in Wānaka."
+    }
+  ]
+}
