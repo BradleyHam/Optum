@@ -56,6 +56,22 @@
   user-select:none;
 }
 
+.f-col .site-credit{
+  display:inline-block;
+  width:max-content;
+  margin-top:1.35rem;
+  padding:0;
+  font-size:.66rem;
+  line-height:1.4;
+  letter-spacing:.06em;
+  color:rgba(246,242,234,.28);
+  transition:color .3s ease;
+}
+
+.f-col .site-credit:hover{
+  color:rgba(246,242,234,.58);
+}
+
 @media(max-width:999px){
   body{
     padding-bottom:0;
