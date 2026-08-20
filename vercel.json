@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/heating-cooling", "destination": "/heating.html", "permanent": true },
+    { "source": "/heating-cooling/", "destination": "/heating.html", "permanent": true },
+    { "source": "/why-us", "destination": "/about.html", "permanent": true },
+    { "source": "/why-us/", "destination": "/about.html", "permanent": true },
+    { "source": "/contact", "destination": "/contact.html", "permanent": true },
+    { "source": "/contact/", "destination": "/contact.html", "permanent": true },
+    { "source": "/plumbing", "destination": "/plumbing.html", "permanent": true },
+    { "source": "/plumbing/", "destination": "/plumbing.html", "permanent": true },
+    { "source": "/the-henderson-home", "destination": "/project-henderson-home.html", "permanent": true },
+    { "source": "/the-henderson-home/", "destination": "/project-henderson-home.html", "permanent": true }
+  ]
+}
