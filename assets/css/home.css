@@ -287,6 +287,7 @@
     position:relative;overflow:hidden;border-radius:8px;isolation:isolate;
     display:flex;align-items:flex-end;min-height:340px;color:var(--bone);cursor:pointer;
   }
+  .bento-tile:focus-visible{outline:3px solid var(--blue);outline-offset:4px;}
   .bento-media{
     position:absolute;inset:0;z-index:-2;transition:transform .9s var(--ease);
     background:#14212b center/cover no-repeat;
