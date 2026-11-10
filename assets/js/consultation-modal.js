@@ -197,6 +197,7 @@
     payload._url = window.location.href;
     payload['Website context'] = enquiryContext;
     payload['Page title'] = document.title;
+    payload.formKind = 'consultation';
 
     const button = form.querySelector('button[type="submit"]');
     const originalButton = button?.innerHTML;
@@ -210,7 +211,7 @@
     if (formNote) formNote.textContent = 'Sending your enquiry…';
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/admin@optum.co.nz', {
+      const response = await fetch('/api/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -28,7 +28,7 @@
     if (note) note.textContent = 'Sending your enquiry…';
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/admin@optum.co.nz', {
+      const response = await fetch('/api/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
