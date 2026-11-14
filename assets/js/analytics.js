@@ -11,6 +11,16 @@
   // GA4 sends one page_view automatically for each full page load.
   window.gtag('config', measurementId);
 
+  document.addEventListener('optum-enquiry-sent', event => {
+    window.gtag('event', 'generate_lead', event.detail);
+  });
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest?.('a[href]');
+    if (link?.protocol === 'tel:') window.gtag('event', 'phone_click');
+    if (link?.protocol === 'mailto:') window.gtag('event', 'email_click');
+  }, true);
+
   const script = document.createElement('script');
   script.async = true;
   script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
