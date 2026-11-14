@@ -183,9 +183,10 @@
     }
   });
 
+  let sending = false;
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (!form.reportValidity()) return;
+    if (sending || !form.reportValidity()) return;
 
     const data = new FormData(form);
     const value = name => String(data.get(name) || '').trim();
@@ -210,6 +211,7 @@
     }
     if (formNote) formNote.textContent = 'Sending your enquiry…';
 
+    sending = true;
     try {
       const response = await fetch('/api/enquiry', {
         method: 'POST',
@@ -223,6 +225,12 @@
       const result = await response.json().catch(() => null);
       if (!response.ok || !result || result.success === false || result.success === 'false') {
         throw new Error(result?.message || 'Submission failed');
+      }
+
+      if (result.success === true && !data.get('_honey')) {
+        document.dispatchEvent(new CustomEvent('optum-enquiry-sent', {
+          detail: { form_name: 'consultation', service_type: value('Enquiry type') }
+        }));
       }
 
       formWrap.hidden = true;
@@ -242,6 +250,7 @@
           ' and send it, or call ', phone, '. If the original arrives too, we may receive it twice.');
       }
     } finally {
+      sending = false;
       window.clearTimeout(timeout);
       if (button) {
         button.disabled = false;
