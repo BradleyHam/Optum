@@ -3,9 +3,10 @@
   const note = document.getElementById('contactFormNote');
   if (!form) return;
 
+  let sending = false;
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (!form.reportValidity()) return;
+    if (sending || !form.reportValidity()) return;
 
     const data = new FormData(form);
     const value = name => String(data.get(name) || '').trim();
@@ -27,8 +28,9 @@
     }
     if (note) note.textContent = 'Sending your enquiry…';
 
+    sending = true;
     try {
-      const response = await fetch('https://formsubmit.co/ajax/admin@optum.co.nz', {
+      const response = await fetch('/api/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,13 +44,29 @@
         throw new Error(result?.message || 'Submission failed');
       }
 
+      if (result.success === true && !data.get('_honey')) {
+        document.dispatchEvent(new CustomEvent('optum-enquiry-sent', {
+          detail: { form_name: 'contact', service_type: value('Enquiry type') }
+        }));
+      }
+
       form.reset();
       if (note) note.textContent = 'Thanks — your enquiry has been sent to Optum.';
     } catch (error) {
       if (note) {
-        note.innerHTML = 'We couldn’t send that just now. Please call <a href="tel:034435718">03 443 5718</a> or email <a href="mailto:admin@optum.co.nz">admin@optum.co.nz</a>.';
+        const body = ['Name', 'email', 'Phone', 'Enquiry type', 'Message']
+          .map(name => `${name}: ${value(name)}`).join('\n\n');
+        const link = document.createElement('a');
+        link.href = `mailto:admin@optum.co.nz?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        link.textContent = 'open your email app with these details';
+        const phone = document.createElement('a');
+        phone.href = 'tel:034435718';
+        phone.textContent = '03 443 5718';
+        note.replaceChildren('We couldn’t confirm your enquiry was sent. Please ', link,
+          ' and send it, or call ', phone, '. If the original arrives too, we may receive it twice.');
       }
     } finally {
+      sending = false;
       window.clearTimeout(timeout);
       if (button) {
         button.disabled = false;
