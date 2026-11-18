@@ -14,6 +14,7 @@ const excluded = new Set([
   '.github',
   '.vercel',
   '_stash',
+  'api',
   'content',
   'dist',
   'node_modules',
@@ -43,6 +44,9 @@ function imageUrl(image) {
 async function loadContent() {
   const fallback = JSON.parse(await readFile(path.join(root, 'content', 'fallback.json'), 'utf8'))
   const token = process.env.SANITY_API_READ_TOKEN
+  if (!token && process.env.VERCEL_ENV === 'production' && process.env.SANITY_USE_FALLBACK !== 'true') {
+    throw new Error('SANITY_API_READ_TOKEN is required for the production build.')
+  }
   if (!token || process.env.SANITY_USE_FALLBACK === 'true') {
     console.log('Building with checked-in fallback content.')
     return fallback
@@ -70,6 +74,7 @@ async function loadContent() {
     }
   }`
   const url = new URL(`https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`)
+  url.searchParams.set('perspective', 'published')
   url.searchParams.set('query', query)
   const response = await fetch(url, {headers: {Authorization: `Bearer ${token}`}})
   if (!response.ok) {
@@ -80,7 +85,23 @@ async function loadContent() {
   if (!content?.projects?.length || !content?.sitePages?.length) {
     throw new Error('Sanity returned incomplete Optum content; the build was stopped to protect the live site.')
   }
-  console.log(`Building with ${content.projects.length} published Sanity projects.`)
+  const requiredPages = new Set(fallback.sitePages.map((page) => page.pageKey))
+  for (const page of content.sitePages) {
+    if (!requiredPages.delete(page.pageKey)) {
+      throw new Error('Sanity returned an unknown or duplicate Optum page.')
+    }
+  }
+  if (requiredPages.size !== 0) {
+    throw new Error('Sanity returned incomplete Optum page content.')
+  }
+  const slugs = new Set()
+  for (const project of content.projects) {
+    if (typeof project.slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(project.slug) || slugs.has(project.slug)) {
+      throw new Error('Sanity returned an invalid or duplicate project slug.')
+    }
+    slugs.add(project.slug)
+  }
+  console.log(`Building with ${content.sitePages.length} published Sanity pages and ${content.projects.length} projects.`)
   return content
 }
 
@@ -197,7 +218,15 @@ async function generateProjectPages(projects) {
     const project = projects[index]
     const previous = projects[(index - 1 + projects.length) % projects.length]
     const next = projects[(index + 1) % projects.length]
-    const $ = load(template)
+    const filename = `project-${project.slug}.html`
+    let pageTemplate = template
+    try {
+      pageTemplate = await readFile(path.join(root, filename), 'utf8')
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error
+    }
+    const $ = load(pageTemplate)
+    $('link[rel="canonical"]').attr('href', `https://www.optum.co.nz/${filename}`)
     $('title').text(project.seoTitle || `${project.title} | Optum`)
     $('meta[name="description"]').attr('content', project.seoDescription || project.cardSummary)
     $('.project-hero-media img').attr({src: imageUrl(project.heroImage), alt: project.heroImage?.alt || project.title})
@@ -259,7 +288,7 @@ async function generateProjectPages(projects) {
     updateNextLink($, '.project-next-grid > a:first-child', previous, 'Previous project', '←')
     updateNextLink($, '.project-next-grid > a:last-child', next, 'Next project', '→')
     updateClosing($, project)
-    await writeFile(path.join(output, `project-${project.slug}.html`), $.html())
+    await writeFile(path.join(output, filename), $.html())
   }
 }
 
