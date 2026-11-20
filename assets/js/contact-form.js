@@ -60,8 +60,8 @@
         link.href = `mailto:admin@optum.co.nz?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         link.textContent = 'open your email app with these details';
         const phone = document.createElement('a');
-        phone.href = 'tel:034435718';
-        phone.textContent = '03 443 5718';
+        phone.href = 'tel:0800467886';
+        phone.textContent = '0800 467 886';
         note.replaceChildren('We couldn’t confirm your enquiry was sent. Please ', link,
           ' and send it, or call ', phone, '. If the original arrives too, we may receive it twice.');
       }

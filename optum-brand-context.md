@@ -143,7 +143,7 @@ They are not chasing 2am burst-pipe callouts. Their customer is planning somethi
 
 ## Contact
 
-- Phone: 03 443 5718
+- Phone: 0800 467 886
 - Email: admin@optum.co.nz
 - Web: optum.co.nz
 - Wānaka: 10 McCormick Street

@@ -1,3 +1,4 @@
+import {formattedText, paragraphFields} from './paragraphFields'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 const requiredText = (title: string, name: string, group: string) =>
@@ -43,14 +44,7 @@ export const project = defineType({
     }),
     defineField({name: 'projectType', title: 'Project type', type: 'string', group: 'overview'}),
     defineField({name: 'location', title: 'Location', type: 'string', group: 'overview'}),
-    defineField({
-      name: 'cardSummary',
-      title: 'Our Work summary',
-      type: 'text',
-      rows: 4,
-      group: 'overview',
-      validation: (rule) => rule.required().max(500),
-    }),
+    ...paragraphFields('cardSummary', 'Our Work summary', {group: 'overview', required: true, maxLength: 500}),
     defineField({
       name: 'award',
       title: 'Award label',
@@ -66,14 +60,7 @@ export const project = defineType({
       group: 'overview',
     }),
     defineField({name: 'heroTitleAfter', title: 'Text after highlighted words', type: 'string', group: 'overview'}),
-    defineField({
-      name: 'heroSummary',
-      title: 'Opening summary',
-      type: 'text',
-      rows: 4,
-      group: 'overview',
-      validation: (rule) => rule.required(),
-    }),
+    ...paragraphFields('heroSummary', 'Opening summary', {group: 'overview', required: true}),
     defineField({
       name: 'heroImage',
       title: 'Main image',
@@ -115,16 +102,9 @@ export const project = defineType({
     requiredText('Story heading', 'storyHeadingBefore', 'story'),
     defineField({name: 'storyHeadingEmphasis', title: 'Highlighted ending', type: 'string', group: 'story'}),
     defineField({name: 'storyHeadingAfter', title: 'Text after highlighted words', type: 'string', group: 'story'}),
-    defineField({
-      name: 'storyParagraphs',
-      title: 'Project story',
-      type: 'array',
-      group: 'story',
-      of: [defineArrayMember({type: 'text', rows: 4})],
-      validation: (rule) => rule.required().min(1),
-    }),
+    ...paragraphFields('storyParagraphs', 'Project story', {group: 'story', required: true, legacyList: true}),
     defineField({name: 'featuresHeading', title: 'Section heading', type: 'string', group: 'features'}),
-    defineField({name: 'featuresSummary', title: 'Section summary', type: 'text', rows: 3, group: 'features'}),
+    ...paragraphFields('featuresSummary', 'Section summary', {group: 'features'}),
     defineField({
       name: 'features',
       title: 'Systems and features',
@@ -136,14 +116,19 @@ export const project = defineType({
           name: 'feature',
           fields: [
             defineField({name: 'title', title: 'Title', type: 'string', validation: (rule) => rule.required()}),
-            defineField({name: 'description', title: 'Description', type: 'text', rows: 4, validation: (rule) => rule.required()}),
+            ...paragraphFields('description', 'Description', {required: true}),
           ],
-          preview: {select: {title: 'title', subtitle: 'description'}},
+          preview: {
+            select: {title: 'title', original: 'description', formatted: 'descriptionFormatted'},
+            prepare({title, original, formatted}) {
+              return {title, subtitle: formatted == null ? original : formattedText(formatted)}
+            },
+          },
         }),
       ],
     }),
     defineField({name: 'galleryHeading', title: 'Small heading', type: 'string', group: 'gallery'}),
-    defineField({name: 'gallerySummary', title: 'Gallery introduction', type: 'text', rows: 3, group: 'gallery'}),
+    ...paragraphFields('gallerySummary', 'Gallery introduction', {group: 'gallery'}),
     defineField({
       name: 'gallery',
       title: 'Project images',
@@ -175,13 +160,13 @@ export const project = defineType({
     defineField({name: 'outcomeQuoteBefore', title: 'Outcome quote', type: 'string', group: 'outcome'}),
     defineField({name: 'outcomeQuoteEmphasis', title: 'Highlighted ending', type: 'string', group: 'outcome'}),
     defineField({name: 'outcomeQuoteAfter', title: 'Text after highlighted words', type: 'string', group: 'outcome'}),
-    defineField({name: 'outcomeBody', title: 'Outcome text', type: 'text', rows: 4, group: 'outcome'}),
+    ...paragraphFields('outcomeBody', 'Outcome text', {group: 'outcome'}),
     defineField({name: 'outcomeCredit', title: 'Outcome credit', type: 'string', group: 'outcome'}),
     defineField({name: 'ctaEyebrow', title: 'Call-to-action label', type: 'string', group: 'outcome'}),
     defineField({name: 'ctaTitleBefore', title: 'Call-to-action heading', type: 'string', group: 'outcome'}),
     defineField({name: 'ctaTitleEmphasis', title: 'Highlighted ending', type: 'string', group: 'outcome'}),
     defineField({name: 'ctaTitleAfter', title: 'Text after highlighted words', type: 'string', group: 'outcome'}),
-    defineField({name: 'ctaBody', title: 'Call-to-action text', type: 'text', rows: 3, group: 'outcome'}),
+    ...paragraphFields('ctaBody', 'Call-to-action text', {group: 'outcome'}),
     defineField({name: 'ctaButton', title: 'Button wording', type: 'string', group: 'outcome', initialValue: 'Free consultation'}),
     defineField({name: 'seoTitle', title: 'Search title', type: 'string', group: 'seo', validation: (rule) => rule.max(70)}),
     defineField({name: 'seoDescription', title: 'Search description', type: 'text', rows: 3, group: 'seo', validation: (rule) => rule.max(170)}),

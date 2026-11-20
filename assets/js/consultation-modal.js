@@ -22,7 +22,7 @@
             <span><b>02</b> We match it with the right person.</span>
             <span><b>03</b> You receive a practical next step.</span>
           </div>
-          <p class="consult-direct">Prefer to talk? <a href="tel:034435718">03 443 5718</a></p>
+          <p class="consult-direct">Prefer to talk? <a href="tel:0800467886">0800 467 886</a></p>
         </aside>
 
         <div class="consult-form-side">
@@ -88,7 +88,7 @@
             <div class="consult-success-mark" aria-hidden="true">→</div>
             <span class="consult-step">Enquiry sent</span>
             <h3>Thanks — we’ve got it.</h3>
-            <p>The Optum team will review your details and get back to you. For an urgent plumbing problem, call 03 443 5718.</p>
+            <p>The Optum team will review your details and get back to you. For an urgent plumbing problem, call 0800 467 886.</p>
             <button type="button" data-consult-close>Return to the website</button>
           </div>
         </div>
@@ -244,8 +244,8 @@
         link.href = `mailto:admin@optum.co.nz?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         link.textContent = 'open your email app with these details';
         const phone = document.createElement('a');
-        phone.href = 'tel:034435718';
-        phone.textContent = '03 443 5718';
+        phone.href = 'tel:0800467886';
+        phone.textContent = '0800 467 886';
         formNote.replaceChildren('We couldn’t confirm your enquiry was sent. Please ', link,
           ' and send it, or call ', phone, '. If the original arrives too, we may receive it twice.');
       }

@@ -1,3 +1,4 @@
+import {paragraphFields} from './paragraphFields'
 import {defineField, defineType} from 'sanity'
 
 export const pageContent = defineType({
@@ -47,13 +48,7 @@ export const pageContent = defineType({
       group: 'hero',
       description: 'Optional normal text that follows the highlighted words.',
     }),
-    defineField({
-      name: 'heroSummary',
-      title: 'Opening summary',
-      type: 'text',
-      rows: 4,
-      group: 'hero',
-    }),
+    ...paragraphFields('heroSummary', 'Opening summary', {group: 'hero'}),
     defineField({
       name: 'introTitleBefore',
       title: 'Introduction heading',
@@ -72,13 +67,7 @@ export const pageContent = defineType({
       type: 'string',
       group: 'intro',
     }),
-    defineField({
-      name: 'introBody',
-      title: 'Introduction text',
-      type: 'text',
-      rows: 5,
-      group: 'intro',
-    }),
+    ...paragraphFields('introBody', 'Introduction text', {group: 'intro'}),
     defineField({name: 'ctaEyebrow', title: 'Small heading', type: 'string', group: 'cta'}),
     defineField({name: 'ctaTitleBefore', title: 'Main heading', type: 'string', group: 'cta'}),
     defineField({
@@ -93,7 +82,7 @@ export const pageContent = defineType({
       type: 'string',
       group: 'cta',
     }),
-    defineField({name: 'ctaBody', title: 'Supporting text', type: 'text', rows: 4, group: 'cta'}),
+    ...paragraphFields('ctaBody', 'Supporting text', {group: 'cta'}),
     defineField({name: 'ctaButton', title: 'Button wording', type: 'string', group: 'cta'}),
   ],
   preview: {

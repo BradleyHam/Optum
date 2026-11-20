@@ -2,6 +2,7 @@ import {cp, mkdir, readFile, readdir, rm, stat, writeFile} from 'node:fs/promise
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {load} from 'cheerio'
+import {escapeHtml, inlineText, paragraphs, plainText} from './paragraphs.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const output = path.join(root, 'dist')
@@ -21,14 +22,6 @@ const excluded = new Set([
   'scripts',
   'studio',
 ])
-
-const escapeHtml = (value = '') =>
-  String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;')
 
 function highlighted(before, emphasis, after) {
   const normal = escapeHtml(before)
@@ -54,22 +47,22 @@ async function loadContent() {
 
   const query = `{
     "sitePages": *[_type == "pageContent"] | order(pageKey asc) {
-      pageKey, pageTitle, heroEyebrow, heroTitleBefore, heroTitleEmphasis, heroTitleAfter, heroSummary,
-      introTitleBefore, introTitleEmphasis, introTitleAfter, introBody,
-      ctaEyebrow, ctaTitleBefore, ctaTitleEmphasis, ctaTitleAfter, ctaBody, ctaButton
+      pageKey, pageTitle, heroEyebrow, heroTitleBefore, heroTitleEmphasis, heroTitleAfter, "heroSummary": coalesce(heroSummaryFormatted, heroSummary),
+      introTitleBefore, introTitleEmphasis, introTitleAfter, "introBody": coalesce(introBodyFormatted, introBody),
+      ctaEyebrow, ctaTitleBefore, ctaTitleEmphasis, ctaTitleAfter, "ctaBody": coalesce(ctaBodyFormatted, ctaBody), ctaButton
     },
     "projects": *[_type == "project"] | order(order asc) {
-      title, "slug": slug.current, order, projectType, location, cardSummary, award,
-      heroTitleBefore, heroTitleEmphasis, heroTitleAfter, heroSummary,
+      title, "slug": slug.current, order, projectType, location, "cardSummary": coalesce(cardSummaryFormatted, cardSummary), award,
+      heroTitleBefore, heroTitleEmphasis, heroTitleAfter, "heroSummary": coalesce(heroSummaryFormatted, heroSummary),
       "heroImage": {"url": heroImage.asset->url, "alt": heroImage.alt},
       heroCreditLabel, heroCreditUrl, facts,
-      storyKicker, storyHeadingBefore, storyHeadingEmphasis, storyHeadingAfter, storyParagraphs,
-      featuresHeading, featuresSummary, features,
-      galleryHeading, gallerySummary,
+      storyKicker, storyHeadingBefore, storyHeadingEmphasis, storyHeadingAfter, "storyParagraphs": coalesce(storyParagraphsFormatted, storyParagraphs),
+      featuresHeading, "featuresSummary": coalesce(featuresSummaryFormatted, featuresSummary), features[]{title, "description": coalesce(descriptionFormatted, description)},
+      galleryHeading, "gallerySummary": coalesce(gallerySummaryFormatted, gallerySummary),
       "gallery": gallery[]{alt, caption, wide, "url": image.asset->url},
       galleryCreditLabel, galleryCreditUrl,
-      outcomeQuoteBefore, outcomeQuoteEmphasis, outcomeQuoteAfter, outcomeBody, outcomeCredit,
-      ctaEyebrow, ctaTitleBefore, ctaTitleEmphasis, ctaTitleAfter, ctaBody, ctaButton,
+      outcomeQuoteBefore, outcomeQuoteEmphasis, outcomeQuoteAfter, "outcomeBody": coalesce(outcomeBodyFormatted, outcomeBody), outcomeCredit,
+      ctaEyebrow, ctaTitleBefore, ctaTitleEmphasis, ctaTitleAfter, "ctaBody": coalesce(ctaBodyFormatted, ctaBody), ctaButton,
       seoTitle, seoDescription
     }
   }`
@@ -134,7 +127,7 @@ function updateClosing($, page) {
   if (page.ctaTitleBefore) {
     closing.find('h2').first().html(highlighted(page.ctaTitleBefore, page.ctaTitleEmphasis, page.ctaTitleAfter))
   }
-  if (page.ctaBody) closing.find('.wrap > p:not(.eyebrow)').first().text(page.ctaBody)
+  if (page.ctaBody != null) closing.find('.wrap > p:not(.eyebrow)').first().html(inlineText(page.ctaBody))
   updateButton($, 'section.closing .btn', page.ctaButton)
 }
 
@@ -146,29 +139,27 @@ async function updateEditablePage(page) {
   if (page.pageKey === 'home') {
     $('.hero .hero-top .eyebrow').first().text(page.heroEyebrow || '')
     $('.hero .hero-title').first().html(highlighted(page.heroTitleBefore, page.heroTitleEmphasis, page.heroTitleAfter))
-    $('.hero .lede').first().text(page.heroSummary || '')
+    $('.hero .lede').first().html(inlineText(page.heroSummary))
     updateButton($, '.hero .btn', page.ctaButton)
   } else if (['heating', 'plumbing', 'ventilation', 'servicing'].includes(page.pageKey)) {
     $('.page-hero .eyebrow').first().text(page.heroEyebrow || '')
     $('.page-hero .title').first().html(highlighted(page.heroTitleBefore, page.heroTitleEmphasis, page.heroTitleAfter))
-    $('.page-hero .sub').first().text(page.heroSummary || '')
+    $('.page-hero .sub').first().html(inlineText(page.heroSummary))
     if (page.introTitleBefore) {
       $('.intro h1').first().html(highlighted(page.introTitleBefore, page.introTitleEmphasis, page.introTitleAfter))
     }
-    if (page.introBody) $('.intro .wrap > p').first().text(page.introBody)
-    updateClosing($, page)
+    if (page.introBody != null) $('.intro .wrap > p').first().html(inlineText(page.introBody))
   } else if (page.pageKey === 'about') {
     $('.about-hero .eyebrow').first().text(page.heroEyebrow || '')
     $('.about-hero h1').first().html(highlighted(page.heroTitleBefore, page.heroTitleEmphasis, page.heroTitleAfter))
-    if (page.heroSummary) $('.about-story .lead').first().text(page.heroSummary)
-    updateClosing($, page)
+    if (page.heroSummary != null) $('.about-story .lead').first().html(inlineText(page.heroSummary))
   } else if (page.pageKey === 'our-work') {
     $('.work-hero .eyebrow').first().text(page.heroEyebrow || '')
     $('.work-hero h1').first().html(highlighted(page.heroTitleBefore, page.heroTitleEmphasis, page.heroTitleAfter))
-    $('.work-hero .wrap > p:not(.eyebrow)').first().text(page.heroSummary || '')
-    updateClosing($, page)
+    $('.work-hero .wrap > p:not(.eyebrow)').first().html(inlineText(page.heroSummary))
   }
 
+  updateClosing($, page)
   await writeFile(file, $.html())
 }
 
@@ -179,7 +170,7 @@ function renderProjectCard(project) {
     <div class="media">${award}<img src="${escapeHtml(imageUrl(project.heroImage))}" alt="${escapeHtml(project.heroImage?.alt || project.title)}"></div>
     <h3>${escapeHtml(project.title)}</h3>
     <p class="loc">${escapeHtml(location)}</p>
-    <p>${escapeHtml(project.cardSummary)}</p>
+    <p>${inlineText(project.cardSummary)}</p>
     <span class="work-card-link">View project <span aria-hidden="true">→</span></span>
   </a>`
 }
@@ -228,12 +219,12 @@ async function generateProjectPages(projects) {
     const $ = load(pageTemplate)
     $('link[rel="canonical"]').attr('href', `https://www.optum.co.nz/${filename}`)
     $('title').text(project.seoTitle || `${project.title} | Optum`)
-    $('meta[name="description"]').attr('content', project.seoDescription || project.cardSummary)
+    $('meta[name="description"]').attr('content', project.seoDescription || plainText(project.cardSummary))
     $('.project-hero-media img').attr({src: imageUrl(project.heroImage), alt: project.heroImage?.alt || project.title})
     setOptionalLink($, $('.project-image-credit').first(), project.heroCreditLabel, project.heroCreditUrl)
     $('.project-hero .eyebrow').first().text([project.projectType, project.location].filter(Boolean).join(' · '))
     $('.project-hero h1').first().html(highlighted(project.heroTitleBefore, project.heroTitleEmphasis, project.heroTitleAfter))
-    $('.project-hero-lead').first().text(project.heroSummary)
+    $('.project-hero-lead').first().html(inlineText(project.heroSummary))
     const award = $('.project-award')
     if (project.award) {
       if (award.length) award.text(project.award)
@@ -249,23 +240,23 @@ async function generateProjectPages(projects) {
     $('.project-kicker').first().text(project.storyKicker || 'The brief')
     $('.project-intro h2').first().html(highlighted(project.storyHeadingBefore, project.storyHeadingEmphasis, project.storyHeadingAfter))
     $('.project-copy').html(
-      (project.storyParagraphs || [])
-        .map((paragraph, paragraphIndex) => `<p${paragraphIndex === 0 ? ' class="lead"' : ''}>${escapeHtml(paragraph)}</p>`)
+      paragraphs(project.storyParagraphs)
+        .map((paragraph, paragraphIndex) => `<p${paragraphIndex === 0 ? ' class="lead"' : ''}>${paragraph}</p>`)
         .join(''),
     )
     $('.project-systems-head h2').first().text(project.featuresHeading || '')
-    $('.project-systems-head p').first().text(project.featuresSummary || '')
+    $('.project-systems-head p').first().html(inlineText(project.featuresSummary))
     $('.project-system-grid').html(
       (project.features || [])
         .map(
           (feature, featureIndex) =>
-            `<article class="project-system"><span class="project-system-num">${String(featureIndex + 1).padStart(2, '0')}</span><div><h3>${escapeHtml(feature.title)}</h3><p>${escapeHtml(feature.description)}</p></div></article>`,
+            `<article class="project-system"><span class="project-system-num">${String(featureIndex + 1).padStart(2, '0')}</span><div><h3>${escapeHtml(feature.title)}</h3><p>${inlineText(feature.description)}</p></div></article>`,
         )
         .join(''),
     )
     $('.project-gallery').attr('aria-label', `${project.title} project gallery`)
     $('.project-gallery-head .eyebrow').first().text(project.galleryHeading || 'Inside the project')
-    $('.project-gallery-head p:not(.eyebrow)').first().text(project.gallerySummary || '')
+    $('.project-gallery-head p:not(.eyebrow)').first().html(inlineText(project.gallerySummary))
     $('.project-gallery-grid').html(
       (project.gallery || [])
         .map(
@@ -283,7 +274,7 @@ async function generateProjectPages(projects) {
       galleryCredit.remove()
     }
     $('.project-outcome blockquote').first().html(highlighted(project.outcomeQuoteBefore, project.outcomeQuoteEmphasis, project.outcomeQuoteAfter))
-    $('.project-outcome-copy p').first().text(project.outcomeBody || '')
+    $('.project-outcome-copy p').first().html(inlineText(project.outcomeBody))
     $('.project-outcome-credit').first().text(project.outcomeCredit || '')
     updateNextLink($, '.project-next-grid > a:first-child', previous, 'Previous project', '←')
     updateNextLink($, '.project-next-grid > a:last-child', next, 'Next project', '→')
