@@ -47,6 +47,7 @@ async function loadContent() {
 
   const query = `{
     "sitePages": *[_type == "pageContent"] | order(pageKey asc) {
+      aboutHeadingFormatted, aboutStoryBody, homeAboutHeading, homeAboutLead, homeAboutBody,
       pageKey, pageTitle, heroEyebrow, heroTitleBefore, heroTitleEmphasis, heroTitleAfter, "heroSummary": coalesce(heroSummaryFormatted, heroSummary),
       introTitleBefore, introTitleEmphasis, introTitleAfter, "introBody": coalesce(introBodyFormatted, introBody),
       ctaEyebrow, ctaTitleBefore, ctaTitleEmphasis, ctaTitleAfter, "ctaBody": coalesce(ctaBodyFormatted, ctaBody), ctaButton
@@ -151,7 +152,14 @@ async function updateEditablePage(page) {
     if (page.introBody != null) $('.intro .wrap > p').first().html(inlineText(page.introBody))
   } else if (page.pageKey === 'about') {
     $('.about-hero .eyebrow').first().text(page.heroEyebrow || '')
-    $('.about-hero h1').first().html(highlighted(page.heroTitleBefore, page.heroTitleEmphasis, page.heroTitleAfter))
+    $('.about-hero h1').first().html(page.aboutHeadingFormatted == null
+      ? highlighted(page.heroTitleBefore, page.heroTitleEmphasis, page.heroTitleAfter)
+      : inlineText(page.aboutHeadingFormatted))
+    if (page.aboutStoryBody != null) {
+      const story = $('.about-story .about-body')
+      story.children('p:not(.lead)').remove()
+      story.children('.lead').after(paragraphs(page.aboutStoryBody).map(text => `<p>${text}</p>`).join(''))
+    }
     if (page.heroSummary != null) $('.about-story .lead').first().html(inlineText(page.heroSummary))
   } else if (page.pageKey === 'our-work') {
     $('.work-hero .eyebrow').first().text(page.heroEyebrow || '')
@@ -286,6 +294,20 @@ async function generateProjectPages(projects) {
 const content = await loadContent()
 await copySiteFiles()
 for (const page of content.sitePages) await updateEditablePage(page)
+const about = content.sitePages.find(page => page.pageKey === 'about')
+if (about) {
+  const file = path.join(output, 'index.html')
+  const $ = load(await readFile(file, 'utf8'))
+  const section = $('#about .about-body')
+  for (const [field, selector] of [
+    ['homeAboutHeading', 'h2'],
+    ['homeAboutLead', 'p.lead'],
+    ['homeAboutBody', 'p.lead + p'],
+  ]) {
+    if (about[field] != null) section.find(selector).first().html(inlineText(about[field]))
+  }
+  await writeFile(file, $.html())
+}
 await updateWorkGrid(content.projects)
 await generateProjectPages(content.projects)
 console.log(`Built Optum site to ${output}`)

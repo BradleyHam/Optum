@@ -1,3 +1,4 @@
+import {aboutFields, isAbout} from './aboutFields'
 import {paragraphFields} from './paragraphFields'
 import {defineField, defineType} from 'sanity'
 
@@ -8,6 +9,7 @@ export const pageContent = defineType({
   groups: [
     {name: 'hero', title: 'Top of page', default: true},
     {name: 'intro', title: 'Introduction'},
+    {name: 'homeAbout', title: 'Homepage About section', hidden: (ctx) => !isAbout(ctx)},
     {name: 'cta', title: 'Bottom call to action'},
   ],
   fields: [
@@ -28,14 +30,16 @@ export const pageContent = defineType({
     }),
     defineField({
       name: 'heroTitleBefore',
+      hidden: isAbout,
       title: 'Main heading',
       type: 'string',
       group: 'hero',
       description: 'The normal part of the main heading.',
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.custom((value, ctx) => ctx.document?.pageKey === 'about' || Boolean(value?.trim()) || 'Please add a main heading.'),
     }),
     defineField({
       name: 'heroTitleEmphasis',
+      hidden: isAbout,
       title: 'Highlighted ending',
       type: 'string',
       group: 'hero',
@@ -43,11 +47,13 @@ export const pageContent = defineType({
     }),
     defineField({
       name: 'heroTitleAfter',
+      hidden: isAbout,
       title: 'Text after highlighted words',
       type: 'string',
       group: 'hero',
       description: 'Optional normal text that follows the highlighted words.',
     }),
+    ...aboutFields,
     ...paragraphFields('heroSummary', 'Opening summary', {group: 'hero'}),
     defineField({
       name: 'introTitleBefore',

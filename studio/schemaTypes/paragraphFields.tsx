@@ -18,24 +18,38 @@ function ParagraphInput(props: ArrayOfObjectsInputProps) {
   const legacyName = String(props.path[props.path.length - 1]).replace(/Formatted$/, '')
   const legacy = useFormValue([...props.path.slice(0, -1), legacyName])
   const paragraphs = existingParagraphs(legacy)
-  if (props.value === undefined && paragraphs.some(Boolean)) {
+  return richTextInput(
+    props,
+    paragraphs.map((text) => [{text}]),
+  )
+}
+
+export type SeedSpan = {text: string; italic?: boolean}
+
+export function richTextInput(props: ArrayOfObjectsInputProps, seed: SeedSpan[][]) {
+  if (props.value === undefined && seed.some((line) => line.some((span) => span.text))) {
     const startEditing = () =>
       props.onChange(
         setIfMissing(
-          paragraphs.map((text) => ({
+          seed.map((line) => ({
             _key: crypto.randomUUID(),
             _type: 'block',
             style: 'normal',
             markDefs: [],
-            children: [{_key: crypto.randomUUID(), _type: 'span', marks: [], text}],
+            children: line.map((span) => ({
+              _key: crypto.randomUUID(),
+              _type: 'span',
+              text: span.text,
+              marks: span.italic ? ['em'] : [],
+            })),
           })),
         ),
       )
     return (
       <div>
-        {paragraphs.map((text, index) => (
+        {seed.map((line, index) => (
           <p key={index} style={{whiteSpace: 'pre-wrap'}}>
-            {text}
+            {line.map((span, i) => (span.italic ? <em key={i}>{span.text}</em> : span.text))}
           </p>
         ))}
         <button type="button" disabled={props.readOnly} onClick={startEditing}>
@@ -58,7 +72,7 @@ function ParagraphInput(props: ArrayOfObjectsInputProps) {
   })
 }
 
-const paragraphBlock = defineArrayMember({
+export const paragraphBlock = defineArrayMember({
   type: 'block',
   styles: [{title: 'Paragraph', value: 'normal'}],
   lists: [],
