@@ -1,4 +1,4 @@
-import {defineArrayMember, defineField, PatchEvent, set, setIfMissing, useFormValue} from 'sanity'
+import {defineArrayMember, defineField, PatchEvent, set, useFormValue} from 'sanity'
 import type {ArrayOfObjectsInputProps, BlockDecoratorProps} from 'sanity'
 
 type Block = {children?: {text?: string}[]}
@@ -30,7 +30,9 @@ export function richTextInput(props: ArrayOfObjectsInputProps, seed: SeedSpan[][
   if (props.value === undefined && seed.some((line) => line.some((span) => span.text))) {
     const startEditing = () =>
       props.onChange(
-        setIfMissing(
+        // Sanity initializes array fields with [] before forwarding input patches.
+        // A setIfMissing here would leave that empty array instead of the seed.
+        set(
           seed.map((line) => ({
             _key: crypto.randomUUID(),
             _type: 'block',
