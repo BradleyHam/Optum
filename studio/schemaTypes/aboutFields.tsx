@@ -3,6 +3,9 @@ import type {ArrayOfObjectsInputProps, ConditionalPropertyCallbackContext} from 
 import {paragraphBlock, richTextInput} from './paragraphFields'
 import type {SeedSpan} from './paragraphFields'
 
+export const isHome = ({document}: ConditionalPropertyCallbackContext) =>
+  document?.pageKey === 'home'
+
 export const isAbout = ({document}: ConditionalPropertyCallbackContext) =>
   document?.pageKey === 'about'
 
@@ -24,14 +27,19 @@ function AboutHeadingInput(props: ArrayOfObjectsInputProps) {
 }
 
 // Seed the editor with the existing website copy until Tracy first saves a formatted version.
-function aboutTextField(name: string, title: string, seed: SeedSpan[][], group = 'homeAbout') {
+function aboutTextField(
+  name: string,
+  title: string,
+  seed: SeedSpan[][],
+  fieldset: 'story' | 'homeAbout' = 'homeAbout',
+) {
   return defineField({
     name,
     title,
-    group,
+    fieldset,
     type: 'array',
     of: [paragraphBlock],
-    hidden: (ctx) => !isAbout(ctx),
+    hidden: (ctx) => (fieldset === 'homeAbout' ? !isHome(ctx) : !isAbout(ctx)),
     components: {input: (props: ArrayOfObjectsInputProps) => richTextInput(props, seed)},
   })
 }
@@ -40,7 +48,7 @@ export const aboutFields = [
   defineField({
     name: 'aboutHeadingFormatted',
     title: 'Main heading',
-    group: 'hero',
+    fieldset: 'hero',
     type: 'array',
     of: [paragraphBlock],
     hidden: (ctx) => !isAbout(ctx),
@@ -59,7 +67,7 @@ export const aboutFields = [
   }),
   aboutTextField(
     'aboutStoryBody',
-    'About page story paragraphs',
+    'Story paragraphs',
     [
       [
         {
@@ -72,7 +80,7 @@ export const aboutFields = [
         },
       ],
     ],
-    'hero',
+    'story',
   ),
   aboutTextField(
     'homeAboutHeading',

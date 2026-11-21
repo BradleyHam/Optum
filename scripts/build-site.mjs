@@ -132,7 +132,7 @@ function updateClosing($, page) {
   updateButton($, 'section.closing .btn', page.ctaButton)
 }
 
-async function updateEditablePage(page) {
+async function updateEditablePage(page, legacyAbout) {
   const filename = page.pageKey === 'home' ? 'index.html' : `${page.pageKey}.html`
   const file = path.join(output, filename)
   const $ = load(await readFile(file, 'utf8'))
@@ -141,6 +141,15 @@ async function updateEditablePage(page) {
     $('.hero .hero-top .eyebrow').first().text(page.heroEyebrow || '')
     $('.hero .hero-title').first().html(highlighted(page.heroTitleBefore, page.heroTitleEmphasis, page.heroTitleAfter))
     $('.hero .lede').first().html(inlineText(page.heroSummary))
+    const section = $('#about .about-body')
+    for (const [field, selector] of [
+      ['homeAboutHeading', 'h2'],
+      ['homeAboutLead', 'p.lead'],
+      ['homeAboutBody', 'p.lead + p'],
+    ]) {
+      const value = page[field] ?? legacyAbout?.[field]
+      if (value != null) section.find(selector).first().html(inlineText(value))
+    }
     updateButton($, '.hero .btn', page.ctaButton)
   } else if (['heating', 'plumbing', 'ventilation', 'servicing'].includes(page.pageKey)) {
     $('.page-hero .eyebrow').first().text(page.heroEyebrow || '')
@@ -293,21 +302,8 @@ async function generateProjectPages(projects) {
 
 const content = await loadContent()
 await copySiteFiles()
-for (const page of content.sitePages) await updateEditablePage(page)
-const about = content.sitePages.find(page => page.pageKey === 'about')
-if (about) {
-  const file = path.join(output, 'index.html')
-  const $ = load(await readFile(file, 'utf8'))
-  const section = $('#about .about-body')
-  for (const [field, selector] of [
-    ['homeAboutHeading', 'h2'],
-    ['homeAboutLead', 'p.lead'],
-    ['homeAboutBody', 'p.lead + p'],
-  ]) {
-    if (about[field] != null) section.find(selector).first().html(inlineText(about[field]))
-  }
-  await writeFile(file, $.html())
-}
+const legacyAbout = content.sitePages.find(page => page.pageKey === 'about')
+for (const page of content.sitePages) await updateEditablePage(page, legacyAbout)
 await updateWorkGrid(content.projects)
 await generateProjectPages(content.projects)
 console.log(`Built Optum site to ${output}`)

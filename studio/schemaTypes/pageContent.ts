@@ -1,16 +1,41 @@
-import {aboutFields, isAbout} from './aboutFields'
+import {aboutFields, isAbout, isHome} from './aboutFields'
 import {paragraphFields} from './paragraphFields'
-import {defineField, defineType} from 'sanity'
+import {defineField, defineType, type ConditionalPropertyCallbackContext} from 'sanity'
+
+const servicePages = ['heating', 'plumbing', 'ventilation', 'servicing']
+const hideServiceIntro = ({document}: ConditionalPropertyCallbackContext) =>
+  !servicePages.includes(String(document?.pageKey))
 
 export const pageContent = defineType({
   name: 'pageContent',
   title: 'Website wording',
   type: 'document',
-  groups: [
-    {name: 'hero', title: 'Top of page', default: true},
-    {name: 'intro', title: 'Introduction'},
-    {name: 'homeAbout', title: 'Homepage About section', hidden: (ctx) => !isAbout(ctx)},
-    {name: 'cta', title: 'Bottom call to action'},
+  fieldsets: [
+    {name: 'hero', title: 'Top of page', options: {collapsible: true, collapsed: true}},
+    {
+      name: 'intro',
+      title: 'Service introduction',
+      hidden: hideServiceIntro,
+      options: {collapsible: true, collapsed: true},
+    },
+    {
+      name: 'story',
+      title: 'Our story',
+      hidden: (ctx) => !isAbout(ctx),
+      options: {collapsible: true, collapsed: true},
+    },
+    {
+      name: 'homeAbout',
+      title: 'Homepage About section',
+      description: 'The heading and two paragraphs beside the owners’ photo.',
+      hidden: (ctx) => !isHome(ctx),
+      options: {collapsible: true, collapsed: false},
+    },
+    {
+      name: 'cta',
+      title: 'Consultation at the bottom of the page',
+      options: {collapsible: true, collapsed: true},
+    },
   ],
   fields: [
     defineField({name: 'pageKey', title: 'Page key', type: 'string', hidden: true}),
@@ -18,6 +43,7 @@ export const pageContent = defineType({
       name: 'pageTitle',
       title: 'Page',
       type: 'string',
+      hidden: true,
       readOnly: true,
       validation: (rule) => rule.required(),
     }),
@@ -25,7 +51,7 @@ export const pageContent = defineType({
       name: 'heroEyebrow',
       title: 'Small heading',
       type: 'string',
-      group: 'hero',
+      fieldset: 'hero',
       description: 'The short label above the main heading.',
     }),
     defineField({
@@ -33,63 +59,75 @@ export const pageContent = defineType({
       hidden: isAbout,
       title: 'Main heading',
       type: 'string',
-      group: 'hero',
+      fieldset: 'hero',
       description: 'The normal part of the main heading.',
-      validation: (rule) => rule.custom((value, ctx) => ctx.document?.pageKey === 'about' || Boolean(value?.trim()) || 'Please add a main heading.'),
+      validation: (rule) =>
+        rule.custom(
+          (value, ctx) =>
+            ctx.document?.pageKey === 'about' ||
+            Boolean(value?.trim()) ||
+            'Please add a main heading.',
+        ),
     }),
     defineField({
       name: 'heroTitleEmphasis',
       hidden: isAbout,
-      title: 'Highlighted ending',
+      title: 'Italic words',
       type: 'string',
-      group: 'hero',
-      description: 'The italic ending of the main heading.',
+      fieldset: 'hero',
+      description: 'The words to emphasise within the heading.',
     }),
     defineField({
       name: 'heroTitleAfter',
       hidden: isAbout,
-      title: 'Text after highlighted words',
+      title: 'Words after italics (optional)',
       type: 'string',
-      group: 'hero',
+      fieldset: 'hero',
       description: 'Optional normal text that follows the highlighted words.',
     }),
     ...aboutFields,
-    ...paragraphFields('heroSummary', 'Opening summary', {group: 'hero'}),
+    ...paragraphFields('heroSummary', 'Opening summary', {fieldset: 'hero'}),
     defineField({
       name: 'introTitleBefore',
       title: 'Introduction heading',
       type: 'string',
-      group: 'intro',
+      fieldset: 'intro',
     }),
     defineField({
       name: 'introTitleEmphasis',
-      title: 'Highlighted ending',
+      title: 'Italic words',
       type: 'string',
-      group: 'intro',
+      fieldset: 'intro',
     }),
     defineField({
       name: 'introTitleAfter',
-      title: 'Text after highlighted words',
+      title: 'Words after italics (optional)',
       type: 'string',
-      group: 'intro',
+      fieldset: 'intro',
     }),
-    ...paragraphFields('introBody', 'Introduction text', {group: 'intro'}),
-    defineField({name: 'ctaEyebrow', title: 'Small heading', type: 'string', group: 'cta'}),
-    defineField({name: 'ctaTitleBefore', title: 'Main heading', type: 'string', group: 'cta'}),
+    ...paragraphFields('introBody', 'Introduction text', {fieldset: 'intro'}),
+    defineField({name: 'ctaEyebrow', title: 'Small heading', type: 'string', fieldset: 'cta'}),
+    defineField({name: 'ctaTitleBefore', title: 'Main heading', type: 'string', fieldset: 'cta'}),
     defineField({
       name: 'ctaTitleEmphasis',
-      title: 'Highlighted ending',
+      title: 'Italic words',
       type: 'string',
-      group: 'cta',
+      fieldset: 'cta',
     }),
     defineField({
       name: 'ctaTitleAfter',
-      title: 'Text after highlighted words',
+      title: 'Words after italics (optional)',
       type: 'string',
-      group: 'cta',
+      fieldset: 'cta',
     }),
-    ...paragraphFields('ctaBody', 'Supporting text', {group: 'cta'}),
-    defineField({name: 'ctaButton', title: 'Button wording', type: 'string', group: 'cta'}),
+    ...paragraphFields('ctaBody', 'Supporting text', {fieldset: 'cta'}),
+    defineField({
+      name: 'ctaButton',
+      title: 'Consultation button text',
+      description: 'On Home, this also sets the consultation button at the top of the page.',
+      type: 'string',
+      fieldset: 'cta',
+    }),
   ],
   preview: {
     select: {title: 'pageTitle', subtitle: 'heroTitleBefore'},

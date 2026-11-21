@@ -96,7 +96,7 @@ export const paragraphBlock = defineArrayMember({
   },
 })
 
-type Options = {group?: string; required?: boolean; maxLength?: number; legacyList?: boolean}
+type Options = {fieldset?: string; required?: boolean; maxLength?: number; legacyList?: boolean}
 
 export function paragraphFields(name: string, title: string, options: Options = {}) {
   const legacy = options.legacyList
@@ -108,7 +108,7 @@ export function paragraphFields(name: string, title: string, options: Options = 
       name: name + 'Formatted',
       title,
       type: 'array',
-      group: options.group,
+      fieldset: options.fieldset,
       of: [paragraphBlock],
       components: {input: ParagraphInput},
       validation: (rule) =>

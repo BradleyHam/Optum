@@ -6,12 +6,20 @@ const pages = [
   ['plumbing', 'Plumbing'],
   ['ventilation', 'Ventilation & Cooling'],
   ['servicing', 'Servicing'],
-  ['about', 'About'],
   ['our-work', 'Our Work'],
+  ['about', 'About'],
 ] as const
 
-export const structure: StructureResolver = (S) =>
-  S.list()
+export const structure: StructureResolver = (S) => {
+  const projects = S.documentTypeListItem('project')
+    .title('Completed projects')
+    .child(
+      S.documentTypeList('project')
+        .title('Completed projects')
+        .defaultOrdering([{field: 'order', direction: 'asc'}]),
+    )
+
+  return S.list()
     .title('Optum website')
     .items([
       S.listItem()
@@ -19,15 +27,20 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.list()
             .title('Website wording')
-            .items(
-              pages.map(([key, title]) =>
+            .items([
+              ...pages.map(([key, title]) =>
                 S.listItem()
                   .title(title)
                   .id(`page-${key}`)
-                  .child(S.document().schemaType('pageContent').documentId(`page.${key}`).title(title)),
+                  .child(
+                    S.document().schemaType('pageContent').documentId(`page.${key}`).title(title),
+                  ),
               ),
-            ),
+              S.divider(),
+              projects,
+            ]),
         ),
       S.divider(),
-      S.documentTypeListItem('project').title('Completed projects'),
+      projects,
     ])
+}
