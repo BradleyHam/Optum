@@ -3,6 +3,7 @@ import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {load} from 'cheerio'
 import {escapeHtml, inlineText, paragraphs, plainText} from './paragraphs.mjs'
+import {applyPlumbingSections} from './plumbing-sections.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const output = path.join(root, 'dist')
@@ -50,7 +51,15 @@ async function loadContent() {
       aboutHeadingFormatted, aboutStoryBody, homeAboutHeading, homeAboutLead, homeAboutBody,
       pageKey, pageTitle, heroEyebrow, heroTitleBefore, heroTitleEmphasis, heroTitleAfter, "heroSummary": coalesce(heroSummaryFormatted, heroSummary),
       introTitleBefore, introTitleEmphasis, introTitleAfter, "introBody": coalesce(introBodyFormatted, introBody),
-      ctaEyebrow, ctaTitleBefore, ctaTitleEmphasis, ctaTitleAfter, "ctaBody": coalesce(ctaBodyFormatted, ctaBody), ctaButton
+      ctaEyebrow, ctaTitleBefore, ctaTitleEmphasis, ctaTitleAfter, "ctaBody": coalesce(ctaBodyFormatted, ctaBody), ctaButton,
+      heroQuote, heroQuoteCredit,
+      formTitle, formMessageLabel, formMessagePlaceholder, formButton, formSuccessTitle, formSuccessBody,
+      servicesEyebrow, services[]{title, body},
+      emergencyKicker, emergencyTitleBefore, emergencyTitleEmphasis, emergencyBody,
+      ownersEyebrow, ownersTitleBefore, ownersTitleEmphasis, ownersLead, ownersBody, ownersCaption,
+      ownersFacts[]{value, label}, ownersLinkLabel,
+      reviewsEyebrow, reviewsTitle, reviewsIntro, reviews[]{quote, highlight, name, source},
+      faqEyebrow, faqTitleBefore, faqTitleEmphasis, faqIntro, faqs[]{question, answer}
     },
     "projects": *[_type == "project"] | order(order asc) {
       title, "slug": slug.current, order, projectType, location, "cardSummary": coalesce(cardSummaryFormatted, cardSummary), award,
@@ -156,9 +165,10 @@ async function updateEditablePage(page, legacyAbout) {
     $('.page-hero .title').first().html(highlighted(page.heroTitleBefore, page.heroTitleEmphasis, page.heroTitleAfter))
     $('.page-hero .sub').first().html(inlineText(page.heroSummary))
     if (page.introTitleBefore) {
-      $('.intro h1').first().html(highlighted(page.introTitleBefore, page.introTitleEmphasis, page.introTitleAfter))
+      $('.intro h1, .intro .intro-title').first().html(highlighted(page.introTitleBefore, page.introTitleEmphasis, page.introTitleAfter))
     }
     if (page.introBody != null) $('.intro .wrap > p').first().html(inlineText(page.introBody))
+    if (page.pageKey === 'plumbing') applyPlumbingSections($, page)
   } else if (page.pageKey === 'about') {
     $('.about-hero .eyebrow').first().text(page.heroEyebrow || '')
     $('.about-hero h1').first().html(page.aboutHeadingFormatted == null

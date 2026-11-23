@@ -22,9 +22,11 @@
     const lenis=new Lenis({lerp:0.085,wheelMultiplier:1,smoothWheel:true,touchMultiplier:1.6});
     function raf(t){lenis.raf(t);requestAnimationFrame(raf);}
     requestAnimationFrame(raf);
+    window.optumLenis=lenis;
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         if(a.getAttribute('aria-haspopup')==='dialog')return;
+        if(a.hasAttribute('data-plumbing-enquire'))return; // plumbing page scrolls to its own sticky-hero form
         const id=a.getAttribute('href');
         if(id.length>1){const el=document.querySelector(id);if(el){e.preventDefault();lenis.scrollTo(el,{offset:-88});}}
       });

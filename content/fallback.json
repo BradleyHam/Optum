@@ -32,19 +32,148 @@
     {
       "pageKey": "plumbing",
       "pageTitle": "Plumbing",
-      "heroEyebrow": "Plumbing · Wānaka & Queenstown",
-      "heroTitleBefore": "Plumbing for the way your home",
-      "heroTitleEmphasis": "really works.",
-      "heroSummary": "From new builds and renovations to repairs and off-mains systems, Optum brings plumbing, gas, drainage and hot water together under one experienced team.",
-      "introTitleBefore": "Plumbing, gas fitting and drainlaying for new builds, renovations and existing homes across Wānaka and Queenstown.",
-      "introTitleEmphasis": "From town supply to off-mains,",
-      "introTitleAfter": "we make the whole system work.",
-      "introBody": "Optum advises, designs, installs, repairs and maintains complete plumbing systems. Working with homeowners, architects and builders, we plan water supply, hot water, drainage, gas and wastewater around the home and the people who use it.",
-      "ctaEyebrow": "Let's begin",
-      "ctaTitleBefore": "Plumbing is best planned",
-      "ctaTitleEmphasis": "early.",
-      "ctaBody": "Talk to us while your project is still on paper and the water, gas and drainage are designed in from the first drawings.",
-      "ctaButton": "Free consultation"
+      "heroEyebrow": "Plumbing",
+      "heroTitleBefore": "Local plumbers in",
+      "heroTitleEmphasis": "Wānaka and Queenstown.",
+      "heroSummary": "Leaking pipe, trouble with your hot water, or planning a bathroom renovation? Tell us what you need and we’ll help you work out the next step.",
+      "introTitleBefore": "Everyday plumbing, done properly.",
+      "introTitleEmphasis": "From a dripping tap to a new bathroom,",
+      "introTitleAfter": "one local team looks after it.",
+      "introBody": "Optum’s plumbers, gasfitters and drainlayers work across Wānaka, Queenstown and Cromwell. We fix leaks and blocked drains, replace hot water cylinders, plumb renovations and new builds, and give you a clear explanation and a clear quote before the work starts.",
+      "ctaEyebrow": "Get in touch",
+      "ctaTitleBefore": "Not sure what you need?",
+      "ctaTitleEmphasis": "Start there.",
+      "ctaBody": "Tell us what’s happening and we’ll help you work out the next step, whether that’s a quick repair, a new hot water cylinder or a full renovation.",
+      "ctaButton": "Start your enquiry",
+      "heroTitleAfter": "",
+      "ctaTitleAfter": "",
+      "heroQuote": "Clear quote, great explanation, very high quality work and a thorough clear up.",
+      "heroQuoteCredit": "Simon Pascoe · 5.0 on Google",
+      "formTitle": "Tell us what you need.",
+      "formMessageLabel": "What do you need help with?",
+      "formMessagePlaceholder": "e.g. leaking hot water cylinder",
+      "formButton": "Send enquiry",
+      "formSuccessTitle": "Thanks, we’ve got it.",
+      "formSuccessBody": "Your enquiry is with the Optum team and someone will be in touch to talk through the next step. If it’s urgent, call 0800 467 886.",
+      "servicesEyebrow": "What we can help with",
+      "services": [
+        {
+          "title": "Leaks, repairs & maintenance",
+          "body": "Leaking pipes, dripping taps, running toilets, low water pressure and faulty fixtures. We find the cause, fix it properly and leave the place tidy."
+        },
+        {
+          "title": "Hot water cylinders",
+          "body": "No hot water, a leaking cylinder or rising power bills. We repair and replace electric, gas and heat pump hot water systems, sized to how your household actually uses water."
+        },
+        {
+          "title": "Bathroom, kitchen & laundry renovations",
+          "body": "Moving a shower, adding a vanity or starting from scratch. We plan the pipework with you or your builder, then handle rough-in, fit-off and sign-off."
+        },
+        {
+          "title": "Blocked drains & drainlaying",
+          "body": "Blocked sinks, toilets and outside drains cleared, damaged drains repaired, and new stormwater and sewer connections laid by certified drainlayers."
+        },
+        {
+          "title": "Gas fitting",
+          "body": "Certified gas fitting for hobs, fires, gas hot water and boilers, including new connections, swaps and safety checks."
+        },
+        {
+          "title": "New builds & extensions",
+          "body": "Plumbing, gas and drainage for new homes and extensions, coordinated with your architect and builder from plans through to handover."
+        },
+        {
+          "title": "Rainwater, water treatment & wastewater",
+          "body": "Rainwater tanks, filtration and UV treatment, plus septic and wastewater systems for rural and off-mains properties."
+        }
+      ],
+      "emergencyKicker": "24/7 emergency plumbing",
+      "emergencyTitleBefore": "Some things cannot",
+      "emergencyTitleEmphasis": "wait.",
+      "emergencyBody": "For burst pipes, blocked toilets and urgent plumbing repairs across Wānaka and Queenstown, call Optum directly.",
+      "ownersEyebrow": "Who you’re dealing with",
+      "ownersTitleBefore": "Meet",
+      "ownersTitleEmphasis": "Tracy and Karl.",
+      "ownersLead": "Tracy and Karl own Optum, a local business that has looked after homes across Wānaka and Queenstown since 1996. When you call, you talk to people who live here and know the houses, the water and the winters.",
+      "ownersBody": "We’ll explain what needs doing and agree the cost before we start. Then we do the job properly and leave the place tidy.",
+      "ownersCaption": "Tracy and Karl, owners of Optum",
+      "ownersFacts": [
+        {
+          "value": "1996",
+          "label": "Serving the Lakes district"
+        },
+        {
+          "value": "5.0",
+          "label": "Google rating"
+        }
+      ],
+      "ownersLinkLabel": "More about Optum",
+      "reviewsEyebrow": "Reviews",
+      "reviewsTitle": "In our clients' words.",
+      "reviewsIntro": "From burst cylinders on a Friday afternoon to full renovations, here is what local homeowners say.",
+      "reviews": [
+        {
+          "quote": "Our HWC leaked. Optum helped us replace it with a much more efficient heat pump hot water cylinder. They were really fast to get us a solution. Workmanship is great.",
+          "highlight": "really fast to get us a solution.",
+          "name": "Dean Dunning",
+          "source": "Google · Hot water replacement"
+        },
+        {
+          "quote": "Great service, they helped me out late on a Friday afternoon when no one else was available.",
+          "highlight": "",
+          "name": "Dan Morrison",
+          "source": "Google review"
+        },
+        {
+          "quote": "Optum plumbers have been great and especially Lachie. They’re our go-to plumbers.",
+          "highlight": "",
+          "name": "David Barton",
+          "source": "Google review"
+        },
+        {
+          "quote": "These guys have worked at my place on two separate, large projects. They did a fantastic job at a reasonable price. Highly recommended.",
+          "highlight": "",
+          "name": "Patrick Dodson",
+          "source": "Google review"
+        },
+        {
+          "quote": "Optum carried out the plumbing, gas and drainage services for our latest project in Wānaka. Their work is the tidiest we have ever seen.",
+          "highlight": "",
+          "name": "Chris Prebble",
+          "source": "Three Sixty Architecture · Wānaka"
+        },
+        {
+          "quote": "Thanks to Kurt and Mikey sorting out my plumbing and working around our work schedules!",
+          "highlight": "",
+          "name": "Jin Ong",
+          "source": "Google review"
+        }
+      ],
+      "faqEyebrow": "Common questions",
+      "faqTitleBefore": "Before you",
+      "faqTitleEmphasis": "get in touch.",
+      "faqIntro": "Still not sure? Call 0800 467 886 and we’ll talk it through.",
+      "faqs": [
+        {
+          "question": "Do you take on small plumbing jobs?",
+          "answer": "Yes. Dripping taps, leaking pipes, running toilets, blocked drains and faulty fixtures are everyday work for our team, alongside larger renovations and new builds."
+        },
+        {
+          "question": "Which areas do you cover?",
+          "answer": "We’re based in Wānaka and work across Queenstown and the wider Queenstown Lakes district, including Cromwell and Central Otago."
+        },
+        {
+          "question": "Can you replace my hot water cylinder?",
+          "answer": "Yes. We repair and replace electric, gas and heat pump hot water cylinders, and can talk you through whether a like-for-like swap or a more efficient system makes more sense for your household."
+        },
+        {
+          "question": "Do you handle emergency plumbing?",
+          "answer": "Yes. For burst pipes, major leaks and other urgent plumbing problems, call us directly on 0800 467 886 rather than using the online form."
+        },
+        {
+          "question": "Can you help with a bathroom renovation?",
+          "answer": "Yes. We plumb bathroom, kitchen and laundry renovations, from moving fixtures and replacing pipework to fit-off, and work alongside your builder or designer if you have one."
+        }
+      ]
     },
     {
       "pageKey": "ventilation",
@@ -68,7 +197,7 @@
       "heroEyebrow": "Servicing · Wānaka & Queenstown",
       "heroTitleBefore": "Systems we install,",
       "heroTitleEmphasis": "we look after.",
-      "heroSummary": "Planned servicing and prompt repairs from two local teams, with annual care for heat pumps and boilers plus practical fault-finding when systems stop behaving.",
+      "heroSummary": "Planned servicing and prompt repairs from our local team, with annual care for heat pumps and boilers plus practical fault-finding when systems stop behaving.",
       "introTitleBefore": "Heating system servicing, boiler servicing, repairs and maintenance across Wānaka and Queenstown, backed by a company",
       "introTitleEmphasis": "operating since 1996.",
       "introBody": "A well-designed system deserves to be kept at its best. We service heat pumps, boilers and hydronic systems, and diagnose faults when something is no longer working as it should.",

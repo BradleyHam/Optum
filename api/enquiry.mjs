@@ -22,17 +22,19 @@ export async function POST(request) {
   const service = get('Enquiry type', 80);
   const message = get('Message', 8000);
   const kind = data.formKind === 'consultation' ? 'Consultation request' : 'Website enquiry';
-  if (!name || !message || !services.has(service) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || /[\r\n]/.test(email)) {
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && !/[\r\n]/.test(email);
+  // Quick enquiries (e.g. the plumbing page) may leave a phone number instead of an email.
+  if (!name || !message || !services.has(service) || (email ? !validEmail : !/\d{6,}/.test(phone.replace(/\D/g, '')))) {
     return Response.json({ success: false }, { status: 400 });
   }
   if (!process.env.RESEND_API_KEY) return Response.json({ success: false }, { status: 503 });
 
-  const text = [`Name: ${name}`, `Email: ${email}`, `Phone: ${phone || 'Not provided'}`, ...(location ? [`Location: ${location}`] : []), `Service: ${service}`, `Message:\n${message}`].join('\n\n');
+  const text = [`Name: ${name}`, `Email: ${email || 'Not provided'}`, `Phone: ${phone || 'Not provided'}`, ...(location ? [`Location: ${location}`] : []), `Service: ${service}`, `Message:\n${message}`].join('\n\n');
   try {
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: 'Optum website via Rank Higher <website@rankhigher.co.nz>', to: ['admin@optum.co.nz'], reply_to: email, subject: `${kind}: ${service}`, text }),
+      body: JSON.stringify({ from: 'Optum website via Rank Higher <website@rankhigher.co.nz>', to: ['admin@optum.co.nz'], ...(email ? {reply_to: email} : {}), subject: `${kind}: ${service}`, text }),
       signal: AbortSignal.timeout(12000)
     });
     if (!response.ok) return Response.json({ success: false }, { status: 502 });

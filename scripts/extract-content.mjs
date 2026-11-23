@@ -2,6 +2,7 @@ import {readFile, writeFile, mkdir} from 'node:fs/promises'
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {load} from 'cheerio'
+import {extractPlumbingSections} from './plumbing-sections.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -57,7 +58,7 @@ async function extractPage(key, filename) {
     }
   } else if (['heating', 'plumbing', 'ventilation', 'servicing'].includes(key)) {
     const heading = splitEmphasis($('.page-hero .title').first())
-    const introHeading = splitEmphasis($('.intro h1').first())
+    const introHeading = splitEmphasis($('.intro h1, .intro .intro-title').first())
     hero = {
       heroEyebrow: text($, '.page-hero .eyebrow'),
       heroTitleBefore: heading.before,
@@ -97,6 +98,7 @@ async function extractPage(key, filename) {
     ...hero,
     ...intro,
     ...closingContent($),
+    ...(key === 'plumbing' ? extractPlumbingSections($) : {}),
   }
 }
 

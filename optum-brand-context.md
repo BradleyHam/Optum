@@ -16,8 +16,8 @@ Optum designs, installs and maintains premium, integrated heating, plumbing and 
 
 - **Full name:** Optum Plumbing & Heating Solutions (the logo says "Plumbing & Heating Solutions"; some listings say "Energy Solutions" — the heating version is the one to use).
 - **Founder:** Kevin Henderson, founding director, ~28 years running the business. Locally owned and operated.
-- **⚠️ OWNERSHIP — NEEDS CONFIRMING:** the business has reportedly changed hands and is now owned by a couple (the woman may be related to Kevin — unconfirmed). Everything above about Kevin as current owner is drawn from the existing site and may be out of date. **Do not name individuals, state roles, or describe relationships on the website until Optum confirms this directly.** The founding date (1996) and company history are safe to use; current ownership is not.
-- **Where:** Wānaka (HQ, 10 McCormick St) and Queenstown. Two teams. They also work into Cromwell and wider Central Otago.
+- **Current owners (confirmed Nov 2026):** Tracy and Karl own Optum and lead the team. Safe to name them on the site. Their relationship to Kevin is not confirmed, so don't describe one.
+- **Where:** Wānaka (HQ, 10 McCormick St) and Queenstown. Number of teams unconfirmed: don't state "two teams" until Optum confirms. They also work into Cromwell and wider Central Otago.
 - **Size/feel:** Established, experienced, respected. Not a big faceless firm, not a one-man band. Named people who show up repeatedly in reviews: Des, Lachie, Scott, Marty, Kurt, Mikey.
 - **Credentials:** Preferred Stiebel Eltron installer. International training and experience. Teams include dedicated central heating specialists. Did the first solar hot water system in Wānaka (2010).
 

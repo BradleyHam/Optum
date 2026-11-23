@@ -4,9 +4,15 @@
 <script defer src="/assets/js/analytics.js?v=1"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plumbing, Gas Fitting &amp; Drainage | Wānaka &amp; Queenstown | Optum Plumbing &amp; Heating</title>
-<meta name="description" content="Plumbing maintenance and installations, gas fitting, drainlaying, hot water, wastewater and water-quality solutions across Wānaka and Queenstown.">
+<title>Plumber Wānaka &amp; Queenstown | Leaks, Hot Water &amp; Bathrooms | Optum</title>
+<meta name="description" content="Local plumbers in Wānaka and Queenstown. Leaks, blocked drains, hot water cylinders, gas fitting and bathroom renovations. 5.0 Google rating, locally owned since 1996. Tell us what you need.">
 <link rel="canonical" href="https://www.optum.co.nz/plumbing.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Local plumbers in Wānaka and Queenstown | Optum">
+<meta property="og:description" content="Leaking pipe, hot water trouble or planning a bathroom renovation? Tell us what you need and we'll help you work out the next step.">
+<meta property="og:url" content="https://www.optum.co.nz/plumbing.html">
+<meta property="og:image" content="https://www.optum.co.nz/assets/plumbing-hero-optum.webp">
+<meta property="og:locale" content="en_NZ">
 <meta name="theme-color" content="#003352">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -16,10 +22,60 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;display=block" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300..700;1,300..700&amp;display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/plumbing-hero-optum.webp" media="(min-width: 700px)">
+<link rel="preload" as="image" href="assets/plumbing-hero-mobile-optum.webp" media="(max-width: 699px)">
 <link rel="stylesheet" href="assets/css/service-page.css?v=21">
+<link rel="stylesheet" href="assets/css/plumbing-page.css?v=13">
 <link rel="stylesheet" href="assets/css/mobile-actions.css?v=11">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Plumber",
+  "@id": "https://www.optum.co.nz/#business",
+  "name": "Optum Plumbing & Heating Solutions",
+  "url": "https://www.optum.co.nz/plumbing.html",
+  "image": "https://www.optum.co.nz/assets/plumbing-hero-optum.webp",
+  "logo": "https://www.optum.co.nz/assets/logo-colour.png",
+  "telephone": "+64-800-467-886",
+  "email": "admin@optum.co.nz",
+  "foundingDate": "1996",
+  "address": {"@type": "PostalAddress", "addressLocality": "Wānaka", "addressRegion": "Otago", "addressCountry": "NZ"},
+  "areaServed": [
+    {"@type": "City", "name": "Wānaka"},
+    {"@type": "City", "name": "Queenstown"},
+    {"@type": "City", "name": "Cromwell"},
+    {"@type": "AdministrativeArea", "name": "Central Otago"}
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Plumbing services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Leak detection and plumbing repairs"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hot water cylinder repair and replacement"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bathroom and kitchen renovation plumbing"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Blocked drains and drainlaying"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Gas fitting"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "New build plumbing"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rainwater, water treatment and wastewater systems"}}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Do you take on small plumbing jobs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Dripping taps, leaking pipes, running toilets, blocked drains and faulty fixtures are everyday work for our team, alongside larger renovations and new builds."}},
+    {"@type": "Question", "name": "Which areas do you cover?", "acceptedAnswer": {"@type": "Answer", "text": "We’re based in Wānaka and work across Queenstown and the wider Queenstown Lakes district, including Cromwell and Central Otago."}},
+    {"@type": "Question", "name": "Can you replace my hot water cylinder?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We repair and replace electric, gas and heat pump hot water cylinders, and can talk you through whether a like-for-like swap or a more efficient system makes more sense for your household."}},
+    {"@type": "Question", "name": "Do you handle emergency plumbing?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. For burst pipes, major leaks and other urgent plumbing problems, call us directly on 0800 467 886 rather than using the online form."}},
+    {"@type": "Question", "name": "Can you help with a bathroom renovation?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We plumb bathroom, kitchen and laundry renovations, from moving fixtures and replacing pipework to fit-off, and work alongside your builder or designer if you have one."}}
+  ]
+}
+</script>
 </head>
-<body>
+<body class="page-plumbing">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header site-header--overlay" id="top">
@@ -39,7 +95,7 @@
       </ul>
     </nav>
     <div class="nav-cta">
-      <a class="btn" href="#contact">Free consultation</a>
+      <a class="btn" href="#enquire" data-plumbing-enquire>Request a plumber</a>
       <button class="menu-btn" aria-label="Open menu" aria-expanded="false" id="menuBtn">
         <span></span><span></span><span></span>
       </button>
@@ -61,96 +117,143 @@
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <a class="btn" href="#contact">Free consultation</a>
+  <a class="btn" href="#enquire" data-plumbing-enquire>Request a plumber</a>
 </div>
 
 <main id="main">
 
   <!-- ============ PAGE HERO ============ -->
-  <section class="page-hero page-hero--plumbing" aria-label="Plumbing">
+  <section class="page-hero page-hero--plumbing" aria-label="Local plumbers in Wānaka and Queenstown">
     <div class="media" aria-hidden="true">
-      <img src="assets/plumbing-hero-optum.webp" alt="">
+      <picture>
+        <source media="(max-width: 699px)" srcset="assets/plumbing-hero-mobile-optum.webp">
+        <img src="assets/plumbing-hero-optum.webp" alt="" fetchpriority="high">
+      </picture>
     </div>
-    <div class="wrap">
-      <p class="eyebrow">Plumbing · Wānaka &amp; Queenstown</p>
-      <p class="title">Plumbing for the way your home <em>really works.</em></p>
-      <p class="sub">From new builds and renovations to repairs and off-mains systems, Optum brings plumbing, gas, drainage and hot water together under one experienced team.</p>
+    <div class="wrap plumb-hero">
+      <div class="plumb-hero-copy">
+        <p class="eyebrow">Plumbing</p>
+        <h1 class="title">Local plumbers in <em>Wānaka and Queenstown.</em></h1>
+        <p class="sub">Leaking pipe, trouble with your hot water, or planning a bathroom renovation? Tell us what you need and we’ll help you work out the next step.</p>
+
+        <figure class="plumb-quote">
+          <blockquote>“Clear quote, great explanation, very high quality work and a thorough clear up.”</blockquote>
+          <figcaption><span class="plumb-quote-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span> Simon Pascoe · 5.0 on Google</figcaption>
+        </figure>
+      </div>
+
+      <div class="plumb-form-card" id="enquire">
+        <div class="plumb-form-wrap">
+          <h2 class="plumb-form-title">Tell us what you need.</h2>
+
+          <form id="plumbingForm" novalidate>
+            <div class="form-honey" aria-hidden="true">
+              <label for="plumbCompany">Leave this field empty</label>
+              <input id="plumbCompany" name="_honey" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="plumb-grid">
+              <div class="plumb-field">
+                <label for="plumbMessage">What do you need help with?</label>
+                <input id="plumbMessage" name="Message" type="text" autocomplete="off" placeholder="e.g. leaking hot water cylinder" required>
+              </div>
+              <div class="plumb-field">
+                <label for="plumbName">Name</label>
+                <input id="plumbName" name="Name" type="text" autocomplete="name" required>
+              </div>
+              <div class="plumb-field">
+                <label for="plumbPhone">Phone</label>
+                <input id="plumbPhone" name="Phone" type="tel" autocomplete="tel" inputmode="tel" required>
+              </div>
+            </div>
+
+            <button class="btn plumb-submit" type="submit">Send enquiry <span class="arw" aria-hidden="true">→</span></button>
+            <p class="plumb-form-note" id="plumbFormNote" aria-live="polite">Urgent? Call <a href="tel:0800467886">0800 467 886</a></p>
+          </form>
+        </div>
+
+        <div class="plumb-success" id="plumbSuccess" tabindex="-1" hidden>
+          <span class="plumb-success-mark" aria-hidden="true">✓</span>
+          <h2>Thanks, we’ve got it.</h2>
+          <p>Your enquiry is with the Optum team and someone will be in touch to talk through the next step. If it’s urgent, call <a href="tel:0800467886">0800 467 886</a>.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ============ INTRO ============ -->
   <section class="intro" aria-label="Overview">
     <div class="wrap">
-      <h1 class="reveal">Plumbing, gas fitting and drainlaying for new builds, renovations and existing homes across Wānaka and Queenstown. <em>From town supply to off-mains,</em> we make the whole system work.</h1>
-      <p class="reveal">Optum advises, designs, installs, repairs and maintains complete plumbing systems. Working with homeowners, architects and builders, we plan water supply, hot water, drainage, gas and wastewater around the home and the people who use it.</p>
+      <h2 class="intro-title reveal">Everyday plumbing, done properly. <em>From a dripping tap to a new bathroom,</em> one local team looks after it.</h2>
+      <p class="reveal">Optum’s plumbers, gasfitters and drainlayers work across Wānaka, Queenstown and Cromwell. We fix leaks and blocked drains, replace hot water cylinders, plumb renovations and new builds, and give you a clear explanation and a clear quote before the work starts.</p>
     </div>
   </section>
 
   <!-- ============ SERVICES ============ -->
   <section class="svc-list-sec" aria-label="Plumbing services">
     <div class="wrap">
-      <p class="eyebrow reveal">What we do</p>
+      <p class="eyebrow reveal">What we can help with</p>
       <div class="svc-explorer">
         <div class="svc-rows">
-        <article class="svc-row svc-row--with-media reveal" data-preview-image="assets/media/projects/camp-glenorchy/bathroom.webp" data-preview-label="New builds and renovations · considered from the first plans">
+        <article class="svc-row svc-row--with-media reveal" data-preview-image="assets/plumbing-fixtures-optum.webp" data-preview-label="Leaks and repairs · found, fixed and tidied up">
           <span class="idx">01</span>
           <div>
-            <h3>New builds &amp; renovations</h3>
-            <p>Plumbing, gas fitting and drainlaying planned with your architect and builder, then carried through installation, fit-off and handover by one coordinated team.</p>
+            <h3>Leaks, repairs &amp; maintenance</h3>
+            <p>Leaking pipes, dripping taps, running toilets, low water pressure and faulty fixtures. We find the cause, fix it properly and leave the place tidy.</p>
           </div>
           <figure class="svc-media">
             <div class="svc-media-frame">
-              <img src="assets/media/projects/camp-glenorchy/bathroom.webp" alt="Finished bathroom plumbing at Optum's Camp Glenorchy project" loading="lazy">
-              <figcaption>New builds and renovations · considered from the first plans</figcaption>
+              <img src="assets/plumbing-fixtures-optum.webp" alt="Bathroom tapware and fixtures repaired by an Optum plumber" loading="lazy">
+              <figcaption>Leaks and repairs · found, fixed and tidied up</figcaption>
             </div>
           </figure>
         </article>
-        <article class="svc-row reveal" data-preview-image="assets/media/projects/hidden-island/plant-room.webp" data-preview-label="Gas fitting and heating · certified, integrated installation">
+        <article class="svc-row reveal" data-preview-image="assets/media/projects/west-meadows-ii/thermal-store.webp" data-preview-label="Hot water · repairs, replacements and upgrades">
           <span class="idx">02</span>
           <div>
-            <h3>Gas fitting &amp; heating</h3>
-            <p>Certified gas fitting for new installations, upgrades and servicing, including gas hot water, boilers, fires and cooking appliances.</p>
+            <h3>Hot water cylinders</h3>
+            <p>No hot water, a leaking cylinder or rising power bills. We repair and replace electric, gas and heat pump hot water systems, sized to how your household actually uses water.</p>
           </div>
         </article>
-        <article class="svc-row reveal" data-preview-image="assets/media/projects/camp-glenorchy/pipework.webp" data-preview-label="Drainlaying and drainage · installed carefully beneath the finish">
+        <article class="svc-row svc-row--with-media reveal" data-preview-image="assets/media/projects/camp-glenorchy/bathroom.webp" data-preview-label="Renovations · bathrooms, kitchens and laundries">
           <span class="idx">03</span>
           <div>
-            <h3>Drainlaying &amp; drainage</h3>
-            <p>New drainage systems, stormwater and sewer connections, blockage clearing and repairs to damaged drains for homes and building projects.</p>
-          </div>
-        </article>
-        <article class="svc-row svc-row--with-media reveal" data-preview-image="assets/media/projects/west-meadows-ii/thermal-store.webp" data-preview-label="Hot water systems · sized around the household">
-          <span class="idx">04</span>
-          <div>
-            <h3>Hot water systems</h3>
-            <p>Installation, repair and maintenance of cylinders, heat pump hot water and integrated systems, sized around the way your household uses water.</p>
+            <h3>Bathroom, kitchen &amp; laundry renovations</h3>
+            <p>Moving a shower, adding a vanity or starting from scratch. We plan the pipework with you or your builder, then handle rough-in, fit-off and sign-off.</p>
           </div>
           <figure class="svc-media">
             <div class="svc-media-frame">
-              <img src="assets/media/projects/west-meadows-ii/thermal-store.webp" alt="Hot water thermal store installed by Optum at West Meadows" loading="lazy">
-              <figcaption>Hot water systems · sized around the household</figcaption>
+              <img src="assets/media/projects/camp-glenorchy/bathroom.webp" alt="Finished bathroom renovation plumbed by Optum" loading="lazy">
+              <figcaption>Renovations · bathrooms, kitchens and laundries</figcaption>
             </div>
           </figure>
         </article>
-        <article class="svc-row reveal" data-preview-image="assets/media/projects/hidden-island/wastewater.webp" data-preview-label="Wastewater treatment · practical off-mains solutions">
+        <article class="svc-row reveal" data-preview-image="assets/media/projects/camp-glenorchy/pipework.webp" data-preview-label="Drains · cleared, repaired and laid new">
+          <span class="idx">04</span>
+          <div>
+            <h3>Blocked drains &amp; drainlaying</h3>
+            <p>Blocked sinks, toilets and outside drains cleared, damaged drains repaired, and new stormwater and sewer connections laid by certified drainlayers.</p>
+          </div>
+        </article>
+        <article class="svc-row reveal" data-preview-image="assets/media/projects/hidden-island/plant-room.webp" data-preview-label="Gas fitting · certified and safe">
           <span class="idx">05</span>
           <div>
-            <h3>Wastewater treatment</h3>
-            <p>Septic and effluent treatment solutions for off-mains properties, including systems that produce treated water suitable for irrigation.</p>
+            <h3>Gas fitting</h3>
+            <p>Certified gas fitting for hobs, fires, gas hot water and boilers, including new connections, swaps and safety checks.</p>
           </div>
         </article>
-        <article class="svc-row reveal" data-preview-image="assets/plumbing-water-optum.webp" data-preview-label="Rainwater and water quality · collected, filtered and ready to use">
+        <article class="svc-row reveal" data-preview-image="assets/media/projects/henderson/services-ceiling.webp" data-preview-label="New builds · planned in from the framing">
           <span class="idx">06</span>
           <div>
-            <h3>Rainwater &amp; water quality</h3>
-            <p>Rainwater tanks, roof-water collection, filtration and treatment for potable household supply, irrigation or other on-site use.</p>
+            <h3>New builds &amp; extensions</h3>
+            <p>Plumbing, gas and drainage for new homes and extensions, coordinated with your architect and builder from plans through to handover.</p>
           </div>
         </article>
-        <article class="svc-row reveal" data-preview-image="assets/plumbing-fixtures-optum.webp" data-preview-label="Maintenance and repairs · careful work, finished properly">
+        <article class="svc-row reveal" data-preview-image="assets/plumbing-water-optum.webp" data-preview-label="Rural water · tanks, treatment and wastewater">
           <span class="idx">07</span>
           <div>
-            <h3>Plumbing maintenance &amp; repairs</h3>
-            <p>Help with leaks, faulty fixtures, blocked or burst pipes, repairs and replacements, plus practical advice when an existing system needs attention.</p>
+            <h3>Rainwater, water treatment &amp; wastewater</h3>
+            <p>Rainwater tanks, filtration and UV treatment, plus septic and wastewater systems for rural and off-mains properties.</p>
           </div>
         </article>
         </div>
@@ -159,13 +262,13 @@
             <div class="svc-preview-card">
               <div class="svc-preview-tilt">
                 <div class="svc-preview-images">
-                  <img class="svc-preview-image is-active" src="assets/media/projects/camp-glenorchy/bathroom.webp" alt="">
-                  <img class="svc-preview-image" src="assets/media/projects/camp-glenorchy/bathroom.webp" alt="">
+                  <img class="svc-preview-image is-active" src="assets/plumbing-fixtures-optum.webp" alt="">
+                  <img class="svc-preview-image" src="assets/plumbing-fixtures-optum.webp" alt="">
                 </div>
                 <div class="svc-preview-shade"></div>
                 <div class="svc-preview-meta">
                   <span class="svc-preview-count">01 / 07</span>
-                  <span class="svc-preview-label">New builds and renovations · considered from the first plans</span>
+                  <span class="svc-preview-label">Leaks and repairs · found, fixed and tidied up</span>
                 </div>
               </div>
             </div>
@@ -193,13 +296,34 @@
     </div>
   </section>
 
+  <!-- ============ OWNERS ============ -->
+  <section class="plumb-owners" aria-labelledby="ownersTitle">
+    <div class="wrap plumb-owners-grid">
+      <figure class="plumb-owners-media reveal">
+        <img src="assets/owners.JPG" alt="Tracy and Karl, owners of Optum Plumbing and Heating, outdoors in Central Otago" loading="lazy" width="1536" height="2048">
+        <figcaption>Tracy and Karl, owners of Optum</figcaption>
+      </figure>
+      <div class="plumb-owners-copy reveal">
+        <p class="eyebrow">Who you’re dealing with</p>
+        <h2 id="ownersTitle">Meet <em>Tracy and Karl.</em></h2>
+        <p class="lead">Tracy and Karl own Optum, a local business that has looked after homes across Wānaka and Queenstown since 1996. When you call, you talk to people who live here and know the houses, the water and the winters.</p>
+        <p>We’ll explain what needs doing and agree the cost before we start. Then we do the job properly and leave the place tidy.</p>
+        <ul class="plumb-owners-facts">
+          <li><strong>1996</strong><span>Serving the Lakes district</span></li>
+          <li><strong>5.0</strong><span>Google rating</span></li>
+        </ul>
+        <a class="plumb-owners-link" href="about.html">More about Optum <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ PLUMBING REVIEWS ============ -->
   <section class="heating-reviews" aria-label="Plumbing client reviews">
     <div class="wrap heating-reviews-head reveal">
       <div class="heating-reviews-intro">
         <p class="eyebrow">Reviews</p>
         <h2>In our clients' words.</h2>
-        <p class="sub">A few notes from clients who trusted Optum with the plumbing in their homes and projects.</p>
+        <p class="sub">From burst cylinders on a Friday afternoon to full renovations, here is what local homeowners say.</p>
       </div>
       <div class="heating-reviews-nav" aria-label="Review carousel controls">
         <button class="heating-rv-arrow" id="heatingRvPrev" type="button" aria-label="Previous review">←</button>
@@ -216,41 +340,86 @@
 
       <article class="heating-rv-card heating-rv-feature">
         <div class="heating-rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote class="heating-rv-text">“Optum carried out the plumbing, gas and drainage services for our latest project in Wānaka. Their work is the <em>tidiest we have ever seen.</em>”</blockquote>
+        <blockquote class="heating-rv-text">“Our HWC leaked. Optum helped us replace it with a much more efficient heat pump hot water cylinder. They were <em>really fast to get us a solution.</em> Workmanship is great.”</blockquote>
         <div class="heating-rv-foot">
-          <span class="heating-rv-name">Chris Prebble</span>
-          <span class="heating-rv-source">Three Sixty Architecture · Wānaka</span>
+          <span class="heating-rv-name">Dean Dunning</span>
+          <span class="heating-rv-source">Google · Hot water replacement</span>
         </div>
       </article>
 
       <article class="heating-rv-card">
         <div class="heating-rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote class="heating-rv-text">“Optum Plumbing set up our commercial laundry for us. Nothing is too much trouble. They helped with the design, installation, troubleshooting and solving problems with ease.”</blockquote>
-        <div class="heating-rv-foot"><span class="heating-rv-name">Bookings QLPM</span><span class="heating-rv-source">Google · 7 months ago</span></div>
-      </article>
-
-      <article class="heating-rv-card">
-        <div class="heating-rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote class="heating-rv-text">“Our HWC leaked. Optum helped us replace it with a much more efficient heat pump hot water cylinder. They were really fast to get us a solution. Workmanship is great.”</blockquote>
-        <div class="heating-rv-foot"><span class="heating-rv-name">Dean Dunning</span><span class="heating-rv-source">Google · 11 months ago</span></div>
+        <blockquote class="heating-rv-text">“Great service, they helped me out late on a Friday afternoon when no one else was available.”</blockquote>
+        <div class="heating-rv-foot"><span class="heating-rv-name">Dan Morrison</span><span class="heating-rv-source">Google review</span></div>
       </article>
 
       <article class="heating-rv-card">
         <div class="heating-rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
         <blockquote class="heating-rv-text">“Optum plumbers have been great and especially Lachie. They’re our go-to plumbers.”</blockquote>
-        <div class="heating-rv-foot"><span class="heating-rv-name">David Barton</span><span class="heating-rv-source">Google · 7 months ago</span></div>
+        <div class="heating-rv-foot"><span class="heating-rv-name">David Barton</span><span class="heating-rv-source">Google review</span></div>
+      </article>
+
+      <article class="heating-rv-card">
+        <div class="heating-rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="heating-rv-text">“These guys have worked at my place on two separate, large projects. They did a fantastic job at a reasonable price. Highly recommended.”</blockquote>
+        <div class="heating-rv-foot"><span class="heating-rv-name">Patrick Dodson</span><span class="heating-rv-source">Google review</span></div>
+      </article>
+
+      <article class="heating-rv-card">
+        <div class="heating-rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="heating-rv-text">“Optum carried out the plumbing, gas and drainage services for our latest project in Wānaka. Their work is the tidiest we have ever seen.”</blockquote>
+        <div class="heating-rv-foot"><span class="heating-rv-name">Chris Prebble</span><span class="heating-rv-source">Three Sixty Architecture · Wānaka</span></div>
+      </article>
+
+      <article class="heating-rv-card">
+        <div class="heating-rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="heating-rv-text">“Thanks to Kurt and Mikey sorting out my plumbing and working around our work schedules!”</blockquote>
+        <div class="heating-rv-foot"><span class="heating-rv-name">Jin Ong</span><span class="heating-rv-source">Google review</span></div>
       </article>
     </div>
   </section>
 
+  <!-- ============ FAQ ============ -->
+  <section class="plumb-faq" aria-labelledby="faqTitle">
+    <div class="wrap plumb-faq-grid">
+      <div class="plumb-faq-head reveal">
+        <p class="eyebrow">Common questions</p>
+        <h2 id="faqTitle">Before you <em>get in touch.</em></h2>
+        <p>Still not sure? Call <a href="tel:0800467886">0800 467 886</a> and we’ll talk it through.</p>
+      </div>
+      <div class="plumb-faq-list reveal">
+        <details>
+          <summary>Do you take on small plumbing jobs?</summary>
+          <p>Yes. Dripping taps, leaking pipes, running toilets, blocked drains and faulty fixtures are everyday work for our team, alongside larger renovations and new builds.</p>
+        </details>
+        <details>
+          <summary>Which areas do you cover?</summary>
+          <p>We’re based in Wānaka and work across Queenstown and the wider Queenstown Lakes district, including Cromwell and Central Otago.</p>
+        </details>
+        <details>
+          <summary>Can you replace my hot water cylinder?</summary>
+          <p>Yes. We repair and replace electric, gas and heat pump hot water cylinders, and can talk you through whether a like-for-like swap or a more efficient system makes more sense for your household.</p>
+        </details>
+        <details>
+          <summary>Do you handle emergency plumbing?</summary>
+          <p>Yes. For burst pipes, major leaks and other urgent plumbing problems, call us directly on <a href="tel:0800467886">0800 467 886</a> rather than using the online form.</p>
+        </details>
+        <details>
+          <summary>Can you help with a bathroom renovation?</summary>
+          <p>Yes. We plumb bathroom, kitchen and laundry renovations, from moving fixtures and replacing pipework to fit-off, and work alongside your builder or designer if you have one.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CLOSING CTA ============ -->
-  <section class="closing" id="contact" aria-label="Start a project">
+  <section class="closing" id="contact" aria-label="Get in touch">
     <img class="closing-video" src="assets/media/projects/camp-glenorchy/pipework.webp" alt="" aria-hidden="true">
     <div class="wrap">
-      <p class="eyebrow">Let's begin</p>
-      <h2>Plumbing is best planned <em>early.</em></h2>
-      <p>Talk to us while your project is still on paper and the water, gas and drainage are designed in from the first drawings.</p>
-      <a class="btn" href="mailto:admin@optum.co.nz">Free consultation <span class="arw" aria-hidden="true">→</span></a>
+      <p class="eyebrow">Get in touch</p>
+      <h2>Not sure what you need? <em>Start there.</em></h2>
+      <p>Tell us what’s happening and we’ll help you work out the next step, whether that’s a quick repair, a new hot water cylinder or a full renovation.</p>
+      <a class="btn" href="#enquire" data-plumbing-enquire>Start your enquiry <span class="arw" aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -262,7 +431,7 @@
     <div class="f-grid">
       <div class="f-intro">
         <p class="f-tag">Designed heating, plumbing and energy systems for homes across Wānaka and Queenstown.</p>
-        <a class="btn f-cta" href="#contact">Free consultation <span class="arw" aria-hidden="true">→</span></a>
+        <a class="btn f-cta" href="#enquire" data-plumbing-enquire>Request a plumber <span class="arw" aria-hidden="true">→</span></a>
       </div>
       <nav class="f-col" aria-label="Sections">
         <h4>Explore</h4>
@@ -301,6 +470,7 @@
 
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="assets/js/mobile-actions.js?v=2"></script>
-<script src="assets/js/site.js?v=13"></script>
+<script src="assets/js/site.js?v=14"></script>
+<script src="assets/js/plumbing-enquiry.js?v=13"></script>
 </body>
 </html>

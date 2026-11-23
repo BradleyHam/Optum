@@ -28,13 +28,53 @@ async function uploadImage(source, alt) {
   }
 }
 
+// Plumbing page sections added after the first import (see scripts/plumbing-sections.mjs).
+const sectionFields = new Set([
+  'heroQuote', 'heroQuoteCredit',
+  'formTitle', 'formMessageLabel', 'formMessagePlaceholder', 'formButton', 'formSuccessTitle', 'formSuccessBody',
+  'servicesEyebrow', 'services',
+  'emergencyKicker', 'emergencyTitleBefore', 'emergencyTitleEmphasis', 'emergencyBody',
+  'ownersEyebrow', 'ownersTitleBefore', 'ownersTitleEmphasis', 'ownersLead', 'ownersBody', 'ownersCaption',
+  'ownersFacts', 'ownersLinkLabel',
+  'reviewsEyebrow', 'reviewsTitle', 'reviewsIntro', 'reviews',
+  'faqEyebrow', 'faqTitleBefore', 'faqTitleEmphasis', 'faqIntro', 'faqs',
+])
+
+// Sanity needs a _key on every item in a list (FAQs, services, reviews, facts).
+const arrayTypes = {services: 'service', ownersFacts: 'fact', reviews: 'review', faqs: 'faq'}
+function withKeys(page) {
+  const result = {...page}
+  for (const [field, type] of Object.entries(arrayTypes)) {
+    if (!Array.isArray(result[field])) continue
+    result[field] = result[field].map((item, index) => {
+      const clean = Object.fromEntries(Object.entries(item).filter(([, value]) => value !== ''))
+      return {_key: `${type}-${index + 1}`, _type: type, ...clean}
+    })
+  }
+  return result
+}
+
 for (const page of content.sitePages) {
   const documentId = `page.${page.pageKey}`
-  if (existingIds.has(documentId)) continue
+  const fields = withKeys(page)
+  if (existingIds.has(documentId)) {
+    // Fill in sections added since the first import without touching anything
+    // that has already been edited in the Studio.
+    const missing = Object.fromEntries(
+      Object.entries(fields).filter(([key, value]) => sectionFields.has(key) && value !== '' && value != null),
+    )
+    const before = await client.getDocument(documentId)
+    const added = Object.keys(missing).filter((key) => before?.[key] === undefined)
+    if (added.length) {
+      await client.patch(documentId).setIfMissing(missing).commit()
+      console.log(`Added ${added.length} new fields to ${page.pageTitle}: ${added.join(', ')}`)
+    }
+    continue
+  }
   await client.createOrReplace({
     _id: documentId,
     _type: 'pageContent',
-    ...page,
+    ...fields,
   })
   console.log(`Imported wording: ${page.pageTitle}`)
 }

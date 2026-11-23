@@ -1,6 +1,7 @@
 import {aboutFields, isAbout, isHome} from './aboutFields'
 import {paragraphFields} from './paragraphFields'
 import {defineField, defineType, type ConditionalPropertyCallbackContext} from 'sanity'
+import {plumbingFields, plumbingFieldsets} from './plumbingSections'
 
 const servicePages = ['heating', 'plumbing', 'ventilation', 'servicing']
 const hideServiceIntro = ({document}: ConditionalPropertyCallbackContext) =>
@@ -31,6 +32,7 @@ export const pageContent = defineType({
       hidden: (ctx) => !isHome(ctx),
       options: {collapsible: true, collapsed: false},
     },
+    ...plumbingFieldsets,
     {
       name: 'cta',
       title: 'Consultation at the bottom of the page',
@@ -106,6 +108,7 @@ export const pageContent = defineType({
       fieldset: 'intro',
     }),
     ...paragraphFields('introBody', 'Introduction text', {fieldset: 'intro'}),
+    ...plumbingFields,
     defineField({name: 'ctaEyebrow', title: 'Small heading', type: 'string', fieldset: 'cta'}),
     defineField({name: 'ctaTitleBefore', title: 'Main heading', type: 'string', fieldset: 'cta'}),
     defineField({
