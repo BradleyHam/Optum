@@ -105,7 +105,16 @@
     event.preventDefault();
     const drawer = document.getElementById('drawer');
     if (drawer?.classList.contains('open')) document.getElementById('drawerClose')?.click();
-    openModal(event.currentTarget);
+    const opener = event.currentTarget;
+    const location = opener.closest('.mobile-action-dock') ? 'mobile_bar'
+      : opener.closest('#drawer') ? 'menu'
+      : opener.closest('header') ? 'header'
+      : opener.closest('footer') ? 'footer'
+      : (opener.closest('section')?.className || '').split(/\s+/)[0] || 'page';
+    document.dispatchEvent(new CustomEvent('optum-enquiry-open', {
+      detail: {form_name: 'plumbing_hero', cta_location: location, cta_text: (opener.querySelector('.mobile-action-title') || opener).textContent.replace(/\s+/g, ' ').replace('→', '').trim()},
+    }));
+    openModal(opener);
   };
   const dockLink = document.querySelector('.mobile-action-dock a');
   if (dockLink) {
