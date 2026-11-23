@@ -9,10 +9,10 @@
   const defaultNote = note?.innerHTML;
 
   // ---- Enquiry modal ----
-  // When the hero form is covered by later sections, the enquiry buttons open
-  // the same form in a dialog instead of scrolling all the way back up. The card
-  // is moved into the dialog (keeping its handlers and state) and a same-size
-  // placeholder holds its spot so the hero height doesn't change underneath.
+  // Every enquiry button opens the hero form in a dialog, so a click always has a
+  // visible result, even when the form is already on screen. The real card moves
+  // into the dialog (keeping its handlers and state) and an inert copy stays in
+  // the hero, so the page behind the overlay looks unchanged and keeps its height.
   const modal = document.createElement('div');
   modal.className = 'plumb-modal';
   modal.hidden = true;
@@ -25,9 +25,7 @@
   document.body.appendChild(modal);
   const modalDialog = modal.querySelector('.plumb-modal-dialog');
   const modalSlot = modal.querySelector('.plumb-modal-slot');
-  const placeholder = document.createElement('div');
-  placeholder.className = 'plumb-form-placeholder';
-  placeholder.setAttribute('aria-hidden', 'true');
+  let ghost = null;
   let modalOpen = false;
   let returnFocus = null;
   let closeTimer = 0;
@@ -39,8 +37,16 @@
     modalOpen = true;
     window.clearTimeout(closeTimer);
     returnFocus = opener || document.activeElement;
-    placeholder.style.height = `${card.offsetHeight}px`;
-    card.replaceWith(placeholder);
+    ghost = card.cloneNode(true);
+    ghost.classList.add('plumb-form-ghost');
+    ghost.setAttribute('aria-hidden', 'true');
+    ghost.inert = true;
+    [ghost, ...ghost.querySelectorAll('[id],[for],[name]')].forEach(el => {
+      el.removeAttribute('id');
+      el.removeAttribute('for');
+      el.removeAttribute('name');
+    });
+    card.replaceWith(ghost);
     card.style.transform = '';
     modalSlot.appendChild(card);
     modal.hidden = false;
@@ -59,7 +65,11 @@
     window.optumLenis?.start();
     closeTimer = window.setTimeout(() => {
       modal.hidden = true;
-      placeholder.replaceWith(card);
+      if (ghost) {
+        card.style.transform = ghost.style.transform;
+        ghost.replaceWith(card);
+        ghost = null;
+      }
       window.dispatchEvent(new Event('scroll'));
     }, 260);
     returnFocus?.focus?.({preventScroll: true});
@@ -90,45 +100,12 @@
     }
   });
 
-  // On this page every enquiry button leads to the plumbing form: scroll to it
-  // while it's still on screen, otherwise open it in the modal.
+  // On this page every enquiry button opens the plumbing form in the modal.
   const goToForm = event => {
     event.preventDefault();
     const drawer = document.getElementById('drawer');
     if (drawer?.classList.contains('open')) document.getElementById('drawerClose')?.click();
-    if (modalOpen) return;
-
-    const heroEl = card.closest('.page-hero');
-    const next = heroEl?.nextElementSibling;
-    if (heroEl && next) {
-      const cardRect = card.getBoundingClientRect();
-      const coveredBy = cardRect.bottom - next.getBoundingClientRect().top;
-      // More than a sliver of the form is hidden under the next section.
-      if (coveredBy > 60) {
-        openModal(event.currentTarget);
-        return;
-      }
-    }
-
-    // The form lives in a sticky hero, so scrollIntoView sees it as already on
-    // screen. Work out where the hero is in place with the form below the header.
-    let top = 0;
-    if (heroEl && next) {
-      const heroTop = next.offsetTop - heroEl.offsetHeight;
-      let cardOffset = 0;
-      for (let el = card; el && el !== heroEl; el = el.offsetParent) cardOffset += el.offsetTop;
-      const headerH = document.querySelector('.site-header')?.offsetHeight || 0;
-      const pinStart = heroTop + Math.max(0, heroEl.offsetHeight - window.innerHeight);
-      top = Math.max(0, Math.min(heroTop + cardOffset - headerH - 16, pinStart));
-    }
-    if (Math.abs(window.scrollY - top) < 4) {
-      focusMessage();
-    } else if (window.optumLenis) {
-      window.optumLenis.scrollTo(top, {onComplete: focusMessage});
-    } else {
-      window.scrollTo({top, behavior: 'smooth'});
-      window.setTimeout(focusMessage, 700);
-    }
+    openModal(event.currentTarget);
   };
   const dockLink = document.querySelector('.mobile-action-dock a');
   if (dockLink) {

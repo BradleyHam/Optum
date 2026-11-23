@@ -255,3 +255,5 @@ html.plumb-modal-open .mobile-action-dock{opacity:0!important;pointer-events:non
 @media(prefers-reduced-motion:reduce){
   .plumb-modal-backdrop,.plumb-modal-dialog{transition:none;}
 }
+/* The inert copy that holds the form's place in the hero while the modal is open */
+.plumb-form-ghost{opacity:0;transition:none;pointer-events:none;}
