@@ -16,6 +16,7 @@
     payload._template = 'table';
     payload._captcha = 'false';
     payload._url = window.location.href;
+    payload._analytics = window.optumAnalyticsContext?.();
 
     const button = form.querySelector('button[type="submit"]');
     const originalButton = button?.innerHTML;

@@ -40,8 +40,38 @@ export async function POST(request) {
     if (!response.ok) return Response.json({ success: false }, { status: 502 });
     const result = await response.json();
     if (!result.id) return Response.json({ success: false }, { status: 502 });
+    await recordEnquiry(data, { kind: data.formKind === 'consultation' ? 'consultation' : 'contact', service }).catch(() => {});
     return Response.json({ success: true });
   } catch {
     return Response.json({ success: false }, { status: 502 });
   }
+}
+
+// Tell GA4 an enquiry was actually delivered. Unlike the browser's generate_lead event,
+// this one is sent by the server after Resend accepts the email, so ad blockers and
+// closed tabs cannot lose it. Only form type and service are sent: never names,
+// emails, phone numbers or messages. A failure here never affects the enquiry.
+async function recordEnquiry(data, { kind, service }) {
+  const measurementId = process.env.GA4_MEASUREMENT_ID;
+  const apiSecret = process.env.GA4_API_SECRET;
+  if (!measurementId || !apiSecret || process.env.VERCEL_ENV !== 'production') return;
+  const context = data._analytics && typeof data._analytics === 'object' ? data._analytics : {};
+  const text = (value, max) => typeof value === 'string' ? value.slice(0, max) : '';
+  const clientId = /^\d+\.\d+$/.test(text(context.client_id, 40)) ? context.client_id : `server.${crypto.randomUUID()}`;
+  const sessionId = /^\d+$/.test(text(context.session_id, 20)) ? Number(context.session_id) : undefined;
+  const params = {
+    form_name: kind,
+    service_type: service,
+    page_location: text(context.page_location, 400) || undefined,
+    session_id: sessionId,
+    engagement_time_msec: 1
+  };
+  try {
+    await fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${encodeURIComponent(measurementId)}&api_secret=${encodeURIComponent(apiSecret)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ client_id: clientId, events: [{ name: 'enquiry_received', params }] }),
+      signal: AbortSignal.timeout(3000)
+    });
+  } catch { /* Analytics must never block an enquiry. */ }
 }

@@ -199,6 +199,7 @@
     payload['Website context'] = enquiryContext;
     payload['Page title'] = document.title;
     payload.formKind = 'consultation';
+    payload._analytics = window.optumAnalyticsContext?.();
 
     const button = form.querySelector('button[type="submit"]');
     const originalButton = button?.innerHTML;

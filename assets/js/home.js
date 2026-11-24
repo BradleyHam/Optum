@@ -18,7 +18,7 @@
   // shared consultation modal
   (function(){
     const script=document.createElement('script');
-    script.src='assets/js/consultation-modal.js?v=8';
+    script.src='assets/js/consultation-modal.js?v=9';
     script.defer=true;
     document.body.appendChild(script);
   })();
