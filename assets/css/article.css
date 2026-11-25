@@ -1,0 +1,25 @@
+/* Advice articles and the advice hub. Builds on about.css. */
+.article-hero .eyebrow a{color:inherit;}
+.article-hero .eyebrow a:hover{text-decoration:underline;}
+.article-hero h1{max-width:24ch;}
+.article-body{padding-block:clamp(3rem,7vw,6rem);}
+.article-wrap{display:grid;gap:clamp(2.5rem,5vw,5rem);}
+@media (min-width:980px){.article-wrap{grid-template-columns:minmax(0,46rem) minmax(0,20rem);justify-content:space-between;align-items:start;}}
+.article-prose{max-width:46rem;}
+.article-prose > *{margin:0 0 1.15rem;}
+.article-prose h2{font-size:clamp(1.45rem,1.2rem + 1vw,2rem);margin:2.6rem 0 1rem;color:var(--blue);}
+.article-prose h3{font-family:var(--sans);font-size:1.02rem;font-weight:600;margin:1.8rem 0 .6rem;}
+.article-prose ul,.article-prose ol{padding-left:1.25rem;}
+.article-prose li{margin-bottom:.55rem;}
+.article-prose a{color:var(--blue);text-decoration:underline;text-underline-offset:.18em;overflow-wrap:anywhere;}
+.article-prose strong{font-weight:600;}
+.article-next{border-top:1px solid var(--line);padding-top:1.5rem;color:var(--muted);}
+@media (min-width:980px){.article-next{position:sticky;top:110px;}}
+.article-next a{color:var(--blue);text-decoration:underline;text-underline-offset:.18em;}
+.article-next .article-back{text-decoration:none;font-weight:600;}
+.advice-list{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border-block:1px solid var(--line);}
+.advice-list li{background:var(--paper);}
+.advice-list a{display:block;padding:clamp(1.4rem,3vw,2.2rem) 0;}
+.advice-list h2{font-size:clamp(1.3rem,1.1rem + .9vw,1.8rem);color:var(--blue);max-width:34ch;}
+.advice-list p{margin:.6rem 0 0;color:var(--muted);max-width:60ch;}
+.advice-list a:hover h2{text-decoration:underline;text-underline-offset:.15em;}

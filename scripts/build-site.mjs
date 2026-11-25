@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url'
 import {load} from 'cheerio'
 import {escapeHtml, inlineText, paragraphs, plainText} from './paragraphs.mjs'
 import {applyPlumbingSections} from './plumbing-sections.mjs'
+import {generateArticles} from './articles.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const output = path.join(root, 'dist')
@@ -316,4 +317,6 @@ const legacyAbout = content.sitePages.find(page => page.pageKey === 'about')
 for (const page of content.sitePages) await updateEditablePage(page, legacyAbout)
 await updateWorkGrid(content.projects)
 await generateProjectPages(content.projects)
+const articles = await generateArticles(root, output)
+console.log(`Restored ${articles.length} advice articles`)
 console.log(`Built Optum site to ${output}`)
