@@ -3,16 +3,770 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/heating-cooling", "destination": "/heating.html", "permanent": true },
-    { "source": "/heating-cooling/", "destination": "/heating.html", "permanent": true },
-    { "source": "/why-us", "destination": "/about.html", "permanent": true },
-    { "source": "/why-us/", "destination": "/about.html", "permanent": true },
-    { "source": "/contact", "destination": "/contact.html", "permanent": true },
-    { "source": "/contact/", "destination": "/contact.html", "permanent": true },
-    { "source": "/plumbing", "destination": "/plumbing.html", "permanent": true },
-    { "source": "/plumbing/", "destination": "/plumbing.html", "permanent": true },
-    { "source": "/the-henderson-home", "destination": "/project-henderson-home.html", "permanent": true },
-    { "source": "/the-henderson-home/", "destination": "/project-henderson-home.html", "permanent": true }
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/heating-cooling",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/heating-cooling/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/why-us",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/why-us/",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/plumbing",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/plumbing/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/the-henderson-home",
+      "destination": "/project-henderson-home.html",
+      "permanent": true
+    },
+    {
+      "source": "/the-henderson-home/",
+      "destination": "/project-henderson-home.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/a-guide-to-why-its-important-to-service-air-to-water-heat-pumps",
+      "destination": "/servicing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/a-guide-to-why-its-important-to-service-air-to-water-heat-pumps/",
+      "destination": "/servicing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-ultimate-bathroom-renovation-transforming-your-space-into-a-sanctuary",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-ultimate-bathroom-renovation-transforming-your-space-into-a-sanctuary/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-deal-with-a-noisy-home-ventilation-system",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-deal-with-a-noisy-home-ventilation-system/",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-reduce-moisture-and-condensation-in-your-home-throughout-winter",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-reduce-moisture-and-condensation-in-your-home-throughout-winter/",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-choose-the-right-tapware-for-your-new-bathroom",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-choose-the-right-tapware-for-your-new-bathroom/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/is-underfloor-heating-right-for-your-renovation-or-new-build",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/is-underfloor-heating-right-for-your-renovation-or-new-build/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/what-to-do-if-your-gas-boiler-stops-working",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/what-to-do-if-your-gas-boiler-stops-working/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-importance-of-annual-diesel-boiler-servicing-ensuring-safety-efficiency-and-longevity",
+      "destination": "/servicing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-importance-of-annual-diesel-boiler-servicing-ensuring-safety-efficiency-and-longevity/",
+      "destination": "/servicing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/what-to-do-if-your-gas-fire-stops-working",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/what-to-do-if-your-gas-fire-stops-working/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-often-should-you-replace-your-home-ventilation-filters",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-often-should-you-replace-your-home-ventilation-filters/",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-climate-change-is-affecting-home-heating-solutions",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-climate-change-is-affecting-home-heating-solutions/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/easy-troubleshooting-tips-to-clear-blockages-and-get-your-dishwasher-draining-again",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/easy-troubleshooting-tips-to-clear-blockages-and-get-your-dishwasher-draining-again/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/why-regular-gas-fire-servicing-is-essential-a-complete-guide",
+      "destination": "/servicing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/why-regular-gas-fire-servicing-is-essential-a-complete-guide/",
+      "destination": "/servicing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/eco-friendly-plumbing-solutions-for-homeowners",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/eco-friendly-plumbing-solutions-for-homeowners/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-avoid-blocking-your-waste-disposal-unit",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-avoid-blocking-your-waste-disposal-unit/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/key-heating-considerations-when-building-your-new-home-tailoring-heating-to-your-lifestyle",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/key-heating-considerations-when-building-your-new-home-tailoring-heating-to-your-lifestyle/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-benefits-of-smart-control-for-home-heating",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-benefits-of-smart-control-for-home-heating/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/solving-low-water-pressure-issues-causes-and-effective-solutions",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/solving-low-water-pressure-issues-causes-and-effective-solutions/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/jaga-briza-range-the-perfect-solution-for-efficient-and-comfortable-climate-control",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/jaga-briza-range-the-perfect-solution-for-efficient-and-comfortable-climate-control/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/5-plumbing-myths-you-should-stop-believing",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/5-plumbing-myths-you-should-stop-believing/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/home-heating-trends-in-2024",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/home-heating-trends-in-2024/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/preparing-your-outdoor-plumbing-systems-for-gardening-in-spring",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/preparing-your-outdoor-plumbing-systems-for-gardening-in-spring/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/top-common-plumbing-problems-and-how-to-troubleshoot-them-like-a-pro",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/top-common-plumbing-problems-and-how-to-troubleshoot-them-like-a-pro/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/heating-advice-for-property-managers-managing-short-long-term-rentals",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/heating-advice-for-property-managers-managing-short-long-term-rentals/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/stiebel-eltron-exclusive-offer-100-month-warranty",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/stiebel-eltron-exclusive-offer-100-month-warranty/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/optum-in-the-press-business-south-magazine-october-2024-issue",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/optum-in-the-press-business-south-magazine-october-2024-issue/",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/5-reasons-to-replace-your-heating-system-before-winter-kicks-in",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/5-reasons-to-replace-your-heating-system-before-winter-kicks-in/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/common-myths-about-home-heating-you-should-stop-believing",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/common-myths-about-home-heating-you-should-stop-believing/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/best-practices-to-avoid-blocking-your-kitchen-drain",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/best-practices-to-avoid-blocking-your-kitchen-drain/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-hidden-benefits-of-flushing-your-heating-system-save-energy-and-extend-lifespan",
+      "destination": "/servicing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-hidden-benefits-of-flushing-your-heating-system-save-energy-and-extend-lifespan/",
+      "destination": "/servicing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/cleaner-safer-water-why-filtration-matters-in-queenstown-and-wanaka",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/cleaner-safer-water-why-filtration-matters-in-queenstown-and-wanaka/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/managing-didymo-in-the-wanaka-and-queenstown-household-water-supply",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/managing-didymo-in-the-wanaka-and-queenstown-household-water-supply/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/autumn-checklist-get-your-heating-system-ready-for-winter",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/autumn-checklist-get-your-heating-system-ready-for-winter/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/heating-plumbing-trends-to-inspire-your-next-project",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/heating-plumbing-trends-to-inspire-your-next-project/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/ventilation-in-new-zealand-homes-a-guide-to-healthier-living",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/ventilation-in-new-zealand-homes-a-guide-to-healthier-living/",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/signs-its-time-to-upgrade-your-hot-water-cylinder",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/signs-its-time-to-upgrade-your-hot-water-cylinder/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/10-common-plumbing-problems-and-how-to-avoid-them-essential-tips-for-preventing-costly-repairs",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/10-common-plumbing-problems-and-how-to-avoid-them-essential-tips-for-preventing-costly-repairs/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-prevent-blocked-kitchen-drains-over-the-holiday-season",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/how-to-prevent-blocked-kitchen-drains-over-the-holiday-season/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/passive-homes-the-key-to-comfortable-energy-efficient-living-in-new-zealand",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/passive-homes-the-key-to-comfortable-energy-efficient-living-in-new-zealand/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/exciting-new-advice-section-on-the-optum-website",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/exciting-new-advice-section-on-the-optum-website/",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-heart-of-every-home-celebrating-the-unsung-heroes-of-plumbing-in-new-zealand",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/the-heart-of-every-home-celebrating-the-unsung-heroes-of-plumbing-in-new-zealand/",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/why-upgrading-your-heating-system-before-winter-makes-sense",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/why-upgrading-your-heating-system-before-winter-makes-sense/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/advice",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/advice/",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/resources",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/resources/",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/news",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/news/",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/article",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/article/",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/solar",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/solar/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/harness-the-suns-energy-with-solar",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/harness-the-suns-energy-with-solar/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/system-designs",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/system-designs/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/sun-gas-and-wood-powered-home-heating",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/sun-gas-and-wood-powered-home-heating/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/new-efficient-radiant-heating-system",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/new-efficient-radiant-heating-system/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/from-gas-boiler-to-heat-pump-an-update-on-measured-performance",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/from-gas-boiler-to-heat-pump-an-update-on-measured-performance/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/5-reasons-to-replace-your-heating-system-before-winter",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/5-reasons-to-replace-your-heating-system-before-winter/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/leading-the-way-with-heat-pump-technology",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/leading-the-way-with-heat-pump-technology/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/solutions-to-architects-most-common-challenges",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/solutions-to-architects-most-common-challenges/",
+      "destination": "/heating.html",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-reduce-moisture-and-condensation-in-your-home-throughout-winter",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-reduce-moisture-and-condensation-in-your-home-throughout-winter/",
+      "destination": "/ventilation.html",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-avoid-blocking-your-waste-disposal-unit",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-avoid-blocking-your-waste-disposal-unit/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/household-plumbing",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/household-plumbing/",
+      "destination": "/plumbing.html",
+      "permanent": true
+    },
+    {
+      "source": "/reliable-and-efficient-new-stiebel-eltron-ground-source-heat-pump-system-for-this-arrowtown-home",
+      "destination": "/our-work.html",
+      "permanent": true
+    },
+    {
+      "source": "/reliable-and-efficient-new-stiebel-eltron-ground-source-heat-pump-system-for-this-arrowtown-home/",
+      "destination": "/our-work.html",
+      "permanent": true
+    },
+    {
+      "source": "/plumbing-excellence-takes-flight-how-optum-optimised-wings-over-water",
+      "destination": "/our-work.html",
+      "permanent": true
+    },
+    {
+      "source": "/plumbing-excellence-takes-flight-how-optum-optimised-wings-over-water/",
+      "destination": "/our-work.html",
+      "permanent": true
+    },
+    {
+      "source": "/future-proofing-comfort-a-sustainable-heating-solution-for-a-wanaka-home",
+      "destination": "/our-work.html",
+      "permanent": true
+    },
+    {
+      "source": "/future-proofing-comfort-a-sustainable-heating-solution-for-a-wanaka-home/",
+      "destination": "/our-work.html",
+      "permanent": true
+    },
+    {
+      "source": "/camp-glenorchy-project",
+      "destination": "/project-camp-glenorchy.html",
+      "permanent": true
+    },
+    {
+      "source": "/camp-glenorchy-project/",
+      "destination": "/project-camp-glenorchy.html",
+      "permanent": true
+    },
+    {
+      "source": "/employment",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/employment/",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/why-us/our-trusted-suppliers",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/why-us/our-trusted-suppliers/",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/who-we-help",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/who-we-help/",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/health-safety",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/health-safety/",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-trade",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-trade/",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/advice/:path*",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/article-category/:path*",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/our-work.html",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/:year(\\d{4})/:path*",
+      "destination": "/advice.html",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/heating.html",
+      "permanent": true
+    }
   ]
 }
