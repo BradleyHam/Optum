@@ -739,32 +739,32 @@
       "permanent": true
     },
     {
-      "source": "/advice/:path*",
+      "source": "/advice/:path(.*)",
       "destination": "/advice.html",
       "permanent": true
     },
     {
-      "source": "/article-category/:path*",
+      "source": "/article-category/:path(.*)",
       "destination": "/advice.html",
       "permanent": true
     },
     {
-      "source": "/category/:path*",
+      "source": "/category/:path(.*)",
       "destination": "/our-work.html",
       "permanent": true
     },
     {
-      "source": "/tag/:path*",
+      "source": "/tag/:path(.*)",
       "destination": "/advice.html",
       "permanent": true
     },
     {
-      "source": "/:year(\\d{4})/:path*",
+      "source": "/:year(\\d{4})/:path(.*)",
       "destination": "/advice.html",
       "permanent": true
     },
     {
-      "source": "/wp-content/:path*",
+      "source": "/wp-content/:path(.*)",
       "destination": "/heating.html",
       "permanent": true
     }
