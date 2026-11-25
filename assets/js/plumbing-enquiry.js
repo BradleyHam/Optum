@@ -233,7 +233,8 @@
       _url: window.location.href,
       'Website context': 'Plumbing page hero form',
       'Page title': document.title,
-      formKind: 'consultation'
+      formKind: 'consultation',
+      _analytics: window.optumAnalyticsContext?.()
     };
 
     const button = form.querySelector('button[type="submit"]');
